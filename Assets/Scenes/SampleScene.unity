@@ -225,7 +225,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -351,6 +351,7 @@ GameObject:
   - component: {fileID: 1144359912}
   - component: {fileID: 1144359911}
   - component: {fileID: 1144359910}
+  - component: {fileID: 1144359913}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -420,7 +421,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 9039534522174995030, guid: 7612024b3eeef4143985249218938d86, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -445,6 +446,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1144359913
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144359909}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9df8d705554fde644be4fb8e3b85c6ab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1439987393
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +479,7 @@ GameObject:
   - component: {fileID: 1439987396}
   - component: {fileID: 1439987395}
   - component: {fileID: 1439987394}
+  - component: {fileID: 1439987397}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -526,8 +550,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 4887901697387183960, guid: 0e9abf9f23019604ba7591b5d9213e0a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -551,6 +575,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1439987397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439987393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48f865d0912d8ed4a81d7ba01d52908e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleSpriteAnimator
+  spriteRenderer: {fileID: 1439987395}
+  idleSprite: {fileID: 4887901697387183960, guid: 0e9abf9f23019604ba7591b5d9213e0a, type: 3}
+  walkSprites:
+  - {fileID: 6972175127658402397, guid: dc6b559b955901b46844ce620659e33c, type: 3}
+  - {fileID: -1498804755424628334, guid: a861db6b7f5e45f4f993f78d4f8c87b8, type: 3}
+  - {fileID: 4862663534667837784, guid: fd45cfaf4cbdb0a4c8d721b99d1d0753, type: 3}
+  - {fileID: -1254147051922101701, guid: d06334fce71cccb41ab7a7de50f14ac6, type: 3}
+  - {fileID: 3492530959748990126, guid: abd2874d80f05c2469f7596d964e301b, type: 3}
+  - {fileID: 8558414608298904053, guid: 058b434b8c40d57488e0d13ebbbb320b, type: 3}
+  - {fileID: 201671399171776922, guid: 55160b35480d7694e984bb0d570c4b14, type: 3}
+  - {fileID: 5150717841613028476, guid: 72dc732984da20c408e11420bc4314e5, type: 3}
+  framesPerSecond: 6
 --- !u!1 &1579137414
 GameObject:
   m_ObjectHideFlags: 0
