@@ -517,6 +517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyChase
   target: {fileID: 1144359912}
   moveSpeed: 2
+  stoppingDistance: 0.2
 --- !u!212 &1439987395
 SpriteRenderer:
   serializedVersion: 2
