@@ -353,6 +353,7 @@ GameObject:
   - component: {fileID: 1144359910}
   - component: {fileID: 1144359913}
   - component: {fileID: 1144359914}
+  - component: {fileID: 1144359915}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -483,6 +484,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimation
   anim: {fileID: 1144359913}
   spriteRenderer: {fileID: 1144359911}
+--- !u!114 &1144359915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144359909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac198e867cd3c9f438de75ef3d940da3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutoTargeting
+  range: 8
 --- !u!1 &1439987393
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,6 +510,7 @@ GameObject:
   - component: {fileID: 1439987394}
   - component: {fileID: 1439987397}
   - component: {fileID: 1439987398}
+  - component: {fileID: 1439987399}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -628,6 +643,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimation
   anim: {fileID: 1439987397}
   spriteRenderer: {fileID: 1439987395}
+--- !u!114 &1439987399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439987393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c59aface9836b4fb9efa00cff2f4a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
 --- !u!1 &1579137414
 GameObject:
   m_ObjectHideFlags: 0
