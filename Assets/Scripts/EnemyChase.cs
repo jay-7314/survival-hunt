@@ -17,4 +17,9 @@ public class EnemyChase : MonoBehaviour
         Vector3 direction = toTarget.normalized;
         transform.position += direction * moveSpeed * Time.deltaTime;
     }
+
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
+    }
 }

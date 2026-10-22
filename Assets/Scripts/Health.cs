@@ -27,6 +27,8 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        gameObject.SetActive(false);
+        Enemy enemy = GetComponent<Enemy>();
+        if (enemy != null) enemy.Despawn();
+        else gameObject.SetActive(false);
     }
 }
