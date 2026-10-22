@@ -5,6 +5,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
     [SerializeField] private float lifeTime = 2f;
+    [SerializeField] private int damage = 1;
 
     private ObjectPool<Projectile> pool;
     private Vector3 direction;
@@ -45,8 +46,12 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<Enemy>() == null) return;
-
-        Debug.Log("명중 : " + other.name);
+        Health health = other.GetComponent<Health>();
+        if(health != null)
+        {
+            health.TakeDamage(damage);
+        }
         Despawn();
+  
     }
 }
