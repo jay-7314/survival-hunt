@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     private ObjectPool<Projectile> pool;
     private Vector3 direction;
     private float timer;
+    private bool released;
 
     public void SetPool(ObjectPool<Projectile> ownerPool)
     {
@@ -19,6 +20,7 @@ public class Projectile : MonoBehaviour
     {
         direction = dir.normalized;
         timer = 0f;
+        released = false;
     }
 
     private void Update()
@@ -34,7 +36,17 @@ public class Projectile : MonoBehaviour
 
     private void Despawn()
     {
+        if (released) return;
+        released=true;
         if (pool != null) pool.Release(this);
         else Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.GetComponent<Enemy>() == null) return;
+
+        Debug.Log("명중 : " + other.name);
+        Despawn();
     }
 }
