@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerLevel : MonoBehaviour
@@ -6,6 +7,8 @@ public class PlayerLevel : MonoBehaviour
 
     private int level = 1;
     private int currentExp;
+    public event Action<int> LeveledUp;     //객체 하나하나 자기채널을 가짐.
+
 
     private void OnEnable()
     {
@@ -39,6 +42,7 @@ public class PlayerLevel : MonoBehaviour
         level++;
         expToNextLevel += 3;
         Debug.Log($"레벨업 ! 현재레벨 : {level}");
+        LeveledUp?.Invoke(level);
     }
 
     [ContextMenu("Add 3 Exp")]
