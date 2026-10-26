@@ -10,6 +10,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private int baseDamage = 1;
     [SerializeField] private float attackCooldown = 0.5f;
 
+    public int CurrentDamage => baseDamage + bonusDamage;
+    public Element CurrentElement => attackElement;
     private Element attackElement;
     private float cooldownTimer;
     private AutoTargeting targeting;
