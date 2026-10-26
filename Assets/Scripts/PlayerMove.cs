@@ -28,4 +28,11 @@ public class PlayerMove : MonoBehaviour
         Vector2 input = moveAction.ReadValue<Vector2>();
         transform.position += (Vector3)(input * moveSpeed * Time.deltaTime);
     }
+
+    public void AddMoveSpeed(float amount)
+    {
+        moveSpeed += amount;
+        Debug.Log($"이동속도 :  {moveSpeed}");
+
+    }
 }

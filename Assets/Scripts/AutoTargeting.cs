@@ -32,4 +32,9 @@ public class AutoTargeting : MonoBehaviour
         }
         return nearest;
     }
+    public void AddRange(float amount)
+    {
+        range += amount;
+        Debug.Log($"사거리 : {range}");
+    }
 }

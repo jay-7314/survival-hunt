@@ -35,4 +35,11 @@ public class Health : MonoBehaviour
         if(enemy != null) enemy.OnKilled();
         else gameObject.SetActive(false);
     }
+
+    public void IncreaseMaxHealth(int amount)
+    {
+        maxHealth += amount;
+        currentHealth += amount;
+        Debug.Log($"최대체력 : {maxHealth}");
+    }
 }

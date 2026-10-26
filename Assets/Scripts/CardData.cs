@@ -6,7 +6,13 @@ public class CardData :ScriptableObject     //에셋 파일이 됨
 {
     [SerializeField] private string cardName;
     [SerializeField, TextArea] private string description;      //설명 문장용
+    [SerializeField] private Element element;
+    [SerializeField] private CardEffect effect;
+    [SerializeField] private float value;
 
     public string CardName => cardName;     //밖에서 읽을수 있고, 바꿀수는 없는것
     public string Description => description;
+    public Element CardElement => element;
+    public CardEffect Effect => effect;
+    public float Value => value;    
 }
