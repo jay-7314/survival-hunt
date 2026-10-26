@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float lifeTime = 2f;
     [SerializeField] private int damage = 1;
 
+    private Element element;
     private ObjectPool<Projectile> pool;
     private Vector3 direction;
     private float timer;
@@ -17,10 +18,11 @@ public class Projectile : MonoBehaviour
         pool = ownerPool;
     }
 
-    public void Launch(Vector3 dir, int newDamage)
+    public void Launch(Vector3 dir, int newDamage, Element newElement)
     {
         direction = dir.normalized;
         damage = newDamage;
+        element = newElement;
         timer = 0f;
         released = false;
     }
@@ -46,10 +48,13 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<Enemy>() == null) return;
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy == null) return;
         Health health = other.GetComponent<Health>();
         if(health != null)
         {
+            float multiplier = ElementChart.GetMultiplier(element, enemy.Element);
+            int finalDamage = Mathf.Max(1, Mathf.RoundToInt(damage * multiplier));
             health.TakeDamage(damage);
         }
         Despawn();

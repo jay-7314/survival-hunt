@@ -65,6 +65,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7069115137527948937, guid: 23114aa49a22ffd44b21a767f91d71e1, type: 3}
+      propertyPath: element
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7069115137527948937, guid: 23114aa49a22ffd44b21a767f91d71e1, type: 3}
       propertyPath: expReward
       value: 2
       objectReference: {fileID: 0}

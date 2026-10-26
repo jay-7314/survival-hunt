@@ -20,7 +20,7 @@ public class SlotBarUI : MonoBehaviour
 
     private void Refresh()
     {
-        for(int i = 0; i<slotTexts.Length; i++)
+        for(int i = 0; i<slotTexts.Length && i<CardManager.SlotCount; i++)
         {
             CardSlot slot = cardManager.getSlot(i);
 

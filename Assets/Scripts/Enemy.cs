@@ -10,6 +10,10 @@ public class Enemy : MonoBehaviour
     public static event Action<Enemy> Killed;       //적이 죽었다는 방송채널
 
     [SerializeField] private int expReward = 1;
+    [SerializeField] private Element element;
+
+    public Element Element => element;
+
     public int ExpReward => expReward;      //읽기만 하게 열어두는것, 밖에서도 읽을수는 있지만 수정은 못함.
 
     public void OnKilled()

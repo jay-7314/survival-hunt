@@ -36,4 +36,10 @@ public class PlayerMove : MonoBehaviour
         Debug.Log($"이동속도 : {moveSpeed + bonusMoveSpeed}");
     }
    
+    public void ApplyCharacter(CharacterData data)
+    {
+        moveSpeed = data.MoveSpeed;
+        Debug.Log($"케릭터 적용 : 이동속도 {moveSpeed + bonusMoveSpeed}");
+
+    }
 }

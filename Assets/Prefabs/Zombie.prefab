@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   expReward: 1
+  element: 3
 --- !u!58 &2286642651373927580
 CircleCollider2D:
   m_ObjectHideFlags: 0

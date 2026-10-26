@@ -54,4 +54,11 @@ public class Health : MonoBehaviour
 
         Debug.Log($"최대체력: {maxHealth+ bonusMaxHealth} /현재체력 {currentHealth}");
     }
+
+    public void ApplyCharacter(CharacterData data)
+    {
+        maxHealth = data.MaxHealth;
+        currentHealth = maxHealth + bonusMaxHealth;
+        Debug.Log($"케릭터 적용 : 최대체력 {maxHealth + bonusMaxHealth}");
+    }
 }

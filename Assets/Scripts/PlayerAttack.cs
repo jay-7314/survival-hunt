@@ -8,11 +8,15 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private Projectile projectilePrefabs;
     [SerializeField] private int baseDamage = 1;
+    [SerializeField] private float attackCooldown = 0.5f;
 
+    private Element attackElement;
+    private float cooldownTimer;
     private AutoTargeting targeting;
     private InputAction attackAction;
     private ObjectPool<Projectile> pool;
     private int bonusDamage;
+    private float bonusAttackSpeed;
 
     private void Awake()
     {
@@ -50,11 +54,31 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        cooldownTimer = Mathf.Max(0f, cooldownTimer - Time.deltaTime);
+
+        if(attackAction.IsPressed() && cooldownTimer <= 0f)
+        {
+            TryFire();
+        }
+
         // 누른 순간에만 참이라 꾹 눌러도 한 번만 발사된다
         if (attackAction.WasPressedThisFrame())
         {
             TryFire();
         }
+    }
+
+    public void SetAttackElement(Element element)
+    {
+        attackElement = element;
+        Debug.Log($"속성 공격 : {attackElement}");
+    }
+
+    public void ApplyCharacter(CharacterData data)
+    {
+        baseDamage = data.BaseDamage;
+        attackCooldown = data.AttackCooldown;
+        Debug.Log($"케릭터 적용 : 공격력 {baseDamage}, 쿨타임 :{attackCooldown}");
     }
 
     // 나중에 화면의 공격 버튼(UI)도 이 함수를 부르게 할 것이라 public으로 분리
@@ -69,12 +93,28 @@ public class PlayerAttack : MonoBehaviour
         Projectile bullet = pool.Get();
         // 재사용된 총알은 이전 위치에 남아 있어서 위치를 다시 정해 준다
         bullet.transform.position = transform.position;
-        bullet.Launch(direction, baseDamage + bonusDamage);
+        bullet.Launch(direction, baseDamage + bonusDamage, attackElement);
+        cooldownTimer = CurrentCooldown;
     }
 
     public void SetDamageBonus(int bonus)
     {
         bonusDamage = bonus;
         Debug.Log($"공격력 :{baseDamage+bonusDamage}");
+    }
+
+    public void SetAttackSpeedBonus(float bonus)
+    {
+        bonusAttackSpeed = bonus;
+        Debug.Log($"공격 쿨타임 : {CurrentCooldown}");
+    }
+
+    private float CurrentCooldown
+    {
+        get
+        {
+            float attacksPerSecond = (1f / attackCooldown) + bonusAttackSpeed;
+            return 1f / Mathf.Max(0.1f, attacksPerSecond);
+        }
     }
 }
