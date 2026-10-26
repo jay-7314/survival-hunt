@@ -5,6 +5,7 @@ public class CardApplier : MonoBehaviour
     [SerializeField] private PlayerMove playerMove;
     [SerializeField] private Health playerHealth;
     [SerializeField] private AutoTargeting autoTargeting;
+    [SerializeField] private PlayerAttack playerAttack;
     [SerializeField] private CardData testCard;
 
     public void Apply(CardData card)
@@ -21,7 +22,7 @@ public class CardApplier : MonoBehaviour
                 autoTargeting.AddRange(card.Value);
                 break;
             case CardEffect.Damage:
-                Debug.Log("공격력은 다음에..");
+                playerAttack.AddDamage(Mathf.RoundToInt(card.Value));
                 break;
         }
     }

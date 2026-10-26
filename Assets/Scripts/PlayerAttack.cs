@@ -7,10 +7,12 @@ using UnityEngine.Pool;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private Projectile projectilePrefabs;
+    [SerializeField] private int baseDamage = 1;
 
     private AutoTargeting targeting;
     private InputAction attackAction;
     private ObjectPool<Projectile> pool;
+    private int bonusDamage;
 
     private void Awake()
     {
@@ -67,6 +69,12 @@ public class PlayerAttack : MonoBehaviour
         Projectile bullet = pool.Get();
         // 재사용된 총알은 이전 위치에 남아 있어서 위치를 다시 정해 준다
         bullet.transform.position = transform.position;
-        bullet.Launch(direction);
+        bullet.Launch(direction, baseDamage + bonusDamage);
+    }
+
+    public void AddDamage(int amount)
+    {
+        bonusDamage += amount;
+        Debug.Log($"공격력 : {baseDamage + bonusDamage}");
     }
 }

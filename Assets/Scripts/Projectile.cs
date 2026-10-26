@@ -17,9 +17,10 @@ public class Projectile : MonoBehaviour
         pool = ownerPool;
     }
 
-    public void Launch(Vector3 dir)
+    public void Launch(Vector3 dir, int newDamage)
     {
         direction = dir.normalized;
+        damage = newDamage;
         timer = 0f;
         released = false;
     }
