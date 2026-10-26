@@ -72,9 +72,9 @@ public class PlayerAttack : MonoBehaviour
         bullet.Launch(direction, baseDamage + bonusDamage);
     }
 
-    public void AddDamage(int amount)
+    public void SetDamageBonus(int bonus)
     {
-        bonusDamage += amount;
-        Debug.Log($"공격력 : {baseDamage + bonusDamage}");
+        bonusDamage = bonus;
+        Debug.Log($"공격력 :{baseDamage+bonusDamage}");
     }
 }

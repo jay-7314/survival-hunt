@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
+    private float bonusMoveSpeed;
 
     private InputAction moveAction;     //결과값을 vector2로 하나로 모인다.
 
@@ -26,13 +27,13 @@ public class PlayerMove : MonoBehaviour
     private void Update()
     {
         Vector2 input = moveAction.ReadValue<Vector2>();
-        transform.position += (Vector3)(input * moveSpeed * Time.deltaTime);
+        transform.position += (Vector3)(input * (moveSpeed + bonusMoveSpeed) * Time.deltaTime);
     }
 
-    public void AddMoveSpeed(float amount)
+    public void SetMoveSpeedBonus(float Bonus)
     {
-        moveSpeed += amount;
-        Debug.Log($"이동속도 :  {moveSpeed}");
-
+        bonusMoveSpeed = Bonus;
+        Debug.Log($"이동속도 : {moveSpeed + bonusMoveSpeed}");
     }
+   
 }

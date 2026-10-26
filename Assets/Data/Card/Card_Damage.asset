@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: "\uACF5\uACA9\uB825"
   description: "\uC801\uC5D0\uAC8C \uACF5\uACA9\uD558\uB294 \uD798\uC774 \uC138\uC9C4\uB2E4\n"
+  element: 1
+  effect: 0
+  value: 1

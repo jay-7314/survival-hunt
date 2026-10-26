@@ -8,7 +8,7 @@ public class LevelUpListener : MonoBehaviour
     [SerializeField] private CardPicker cardPicker;
     [SerializeField] private GameObject cardPanel;
     [SerializeField] private TextMeshProUGUI[] cardTexts;
-    [SerializeField] private CardApplier cardApplier;
+    [SerializeField] private CardManager cardManager;
 
     private List<CardData> currentCards;
 
@@ -37,8 +37,15 @@ public class LevelUpListener : MonoBehaviour
     public void SelectCard(int index)
     {
         if (currentCards == null && index >= currentCards.Count) return;
+        CardData card = currentCards[index];
+        CardManager.SelectResult result = cardManager.TrySelect(card);
 
-        cardApplier.Apply(currentCards[index]);
+        if(result == CardManager.SelectResult.NeedReplace)
+        {
+            Debug.Log("슬롯이 가득 찼습니다.");
+            return;
+        }
+
         cardPanel.SetActive(false);
         Time.timeScale = 1f;
     }

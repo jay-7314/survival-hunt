@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b19c51b537c764489db7fbe29be0c2, type: 3}
   m_Name: Card_Range
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: 
-  description: 
-  element: 0
-  effect: 0
-  value: 0
+  cardName: "\uC0AC\uC815\uAC70\uB9AC"
+  description: "\uB354 \uBA40\uB9AC\uC788\uB294 \uC801\uAE4C\uC9C0 \uACF5\uACA9\uD560\uC218
+    \uC788\uB2E4."
+  element: 2
+  effect: 3
+  value: 1

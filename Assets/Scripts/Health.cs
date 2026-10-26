@@ -8,11 +8,12 @@ public class Health : MonoBehaviour
     [SerializeField] private int maxHealth = 3;
     public event Action Died;
     private int currentHealth;
+    private int bonusMaxHealth;
 
 
     private void OnEnable()
     {
-        currentHealth = maxHealth;
+        currentHealth = maxHealth+bonusMaxHealth;
     }
 
     public void TakeDamage(int amount)
@@ -41,5 +42,16 @@ public class Health : MonoBehaviour
         maxHealth += amount;
         currentHealth += amount;
         Debug.Log($"최대체력 : {maxHealth}");
+    }
+
+    public void SetMaxHealthBonus(int bonus)
+    {
+        int diff = bonus - bonusMaxHealth;
+        bonusMaxHealth = bonus;
+
+        if (diff > 0) currentHealth += diff;
+        else currentHealth = Mathf.Min(currentHealth, maxHealth + bonusMaxHealth);
+
+        Debug.Log($"최대체력: {maxHealth+ bonusMaxHealth} /현재체력 {currentHealth}");
     }
 }
