@@ -61,4 +61,12 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth + bonusMaxHealth;
         Debug.Log($"케릭터 적용 : 최대체력 {maxHealth + bonusMaxHealth}");
     }
+
+    public void Heal(int amount)
+    {
+        if (currentHealth <= 0) return;
+
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth + bonusMaxHealth);
+        Debug.Log($"체력 회복 : {currentHealth} / {maxHealth + bonusMaxHealth}");
+    }
 }

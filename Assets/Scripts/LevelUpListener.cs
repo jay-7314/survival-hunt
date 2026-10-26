@@ -10,6 +10,8 @@ public class LevelUpListener : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] cardTexts;
     [SerializeField] private CardManager cardManager;
     [SerializeField] private GameObject replacePrompt;
+    [SerializeField] private Health playerHealth;
+    [SerializeField] private int skipHealAmount = 2;
 
     private CardData pendingCard;
     private List<CardData> currentCards;
@@ -75,5 +77,12 @@ public class LevelUpListener : MonoBehaviour
     {
         pendingCard = null;
         replacePrompt.SetActive(false);
+    }
+
+    public void Skip()
+    {
+        playerHealth.Heal(skipHealAmount);
+        Debug.Log("카드 건너뛰기");
+         CloseLevelUp() ;
     }
 }

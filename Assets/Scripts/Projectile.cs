@@ -55,6 +55,7 @@ public class Projectile : MonoBehaviour
         {
             float multiplier = ElementChart.GetMultiplier(element, enemy.Element);
             int finalDamage = Mathf.Max(1, Mathf.RoundToInt(damage * multiplier));
+
             health.TakeDamage(damage);
         }
         Despawn();
