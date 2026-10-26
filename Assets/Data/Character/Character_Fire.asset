@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c9a8088e24fc143b39ac83a93824eb, type: 3}
   m_Name: Character_Fire
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  characterName: 
-  moveSpeed: 1
-  baseDamage: 1
-  maxHealth: 10
-  attackCooldown: 0.5
-  startingCard: {fileID: 0}
+  characterName: "\uBD88\uC758 \uC0AC\uB0E5\uAFBC"
+  moveSpeed: 4
+  baseDamage: 2
+  maxHealth: 12
+  attackCooldown: 0.6
+  startingCard: {fileID: 11400000, guid: c1afd53e053db744c81a524a6c3f8d6f, type: 2}
