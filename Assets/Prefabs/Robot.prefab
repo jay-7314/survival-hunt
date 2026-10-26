@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2286642651373927580, guid: 23114aa49a22ffd44b21a767f91d71e1, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 2299776011207911529, guid: 23114aa49a22ffd44b21a767f91d71e1, type: 3}
       propertyPath: m_Controller
       value: 
