@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyChase
   target: {fileID: 0}
-  moveSpeed: 2
+  moveSpeed: 3
   stoppingDistance: 0.2
 --- !u!95 &2299776011207911529
 Animator:
@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c59aface9836b4fb9efa00cff2f4a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  expReward: 1
 --- !u!58 &2286642651373927580
 CircleCollider2D:
   m_ObjectHideFlags: 0

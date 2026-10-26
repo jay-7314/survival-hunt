@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,9 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 3;
+    public event Action Died;
     private int currentHealth;
+
 
     private void OnEnable()
     {
@@ -27,6 +30,7 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
+        Died?.Invoke();
         Enemy enemy = GetComponent<Enemy>();
         if(enemy != null) enemy.OnKilled();
         else gameObject.SetActive(false);
