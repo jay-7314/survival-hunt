@@ -5865,6 +5865,12 @@ MonoBehaviour:
   player: {fileID: 1144359912}
   spawnInterval: 6
   spawnDistance: 10
+  floorTilemap: {fileID: 101818566}
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 128
+  spawnCheckRadius: 0.4
+  maxSpawnTries: 10
   minSpawnInterval: 0.5
   intervalDecreasePerSecond: 0.02
 --- !u!4 &1119831350
@@ -6432,6 +6438,12 @@ MonoBehaviour:
   player: {fileID: 1144359912}
   spawnInterval: 2
   spawnDistance: 10
+  floorTilemap: {fileID: 101818566}
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 128
+  spawnCheckRadius: 0.4
+  maxSpawnTries: 10
   minSpawnInterval: 0.5
   intervalDecreasePerSecond: 0.02
 --- !u!4 &1367158439
@@ -8343,7 +8355,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
