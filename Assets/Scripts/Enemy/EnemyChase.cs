@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyChase : MonoBehaviour
@@ -9,6 +8,7 @@ public class EnemyChase : MonoBehaviour
     [SerializeField] private float knockbackDecay = 12f;        //1초에 얼마나 줄어드는지
     private Vector3 knockbackVelocity;              // 지금 밀려나는 속도
     private Rigidbody2D rb;
+    private FlowField flowField;
 
     private void Awake()
     {
@@ -36,9 +36,25 @@ public class EnemyChase : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             return;
         }
-        rb.linearVelocity = toTarget.normalized * moveSpeed;
+
+        Vector2 direction = toTarget.normalized;            //플레이어를 향한 직선 방향
+
+        if(flowField != null)
+        {
+            Vector2 flowDirection = flowField.GetDirection(transform.position);
+            if (flowDirection != Vector2.zero)
+            {
+                direction = flowDirection;
+            }
+        }
+
+        rb.linearVelocity = direction * moveSpeed;
     }
 
+    public void SetFlowField(FlowField field)
+    {
+        flowField = field;
+    }
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;

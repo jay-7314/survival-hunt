@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int maxSpawnTries = 10;
     [SerializeField] private float minSpawnInterval = 0.5f;     //간격의 하한선
     [SerializeField] private float intervalDecreasePerSecond = 0.02f;           //1초가 지날때 간격이 줄어드는 양
+    [SerializeField] private FlowField flowField;
     private float elapsed;      //게임시작후 흐른시간
 
     private ObjectPool<Enemy> pool;
@@ -26,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 Enemy zombie = Instantiate(zombiePrefab);
                 zombie.GetComponent<EnemyChase>().SetTarget(player);
+                zombie.GetComponent<EnemyChase>().SetFlowField(flowField);
                 zombie.SetPool(pool);
                 return zombie;
             },
