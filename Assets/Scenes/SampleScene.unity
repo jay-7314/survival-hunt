@@ -4697,6 +4697,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4822,6 +4823,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 249dc931068e2084f9973baaed44ad7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
+  target: {fileID: 1144359912}
+  minBonus: {x: -12, y: -7}
+  maxBonus: {x: 12, y: 7}
 --- !u!1 &525642073
 GameObject:
   m_ObjectHideFlags: 0
@@ -6031,6 +6047,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AutoTargeting
   range: 8
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &1144359916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6154,6 +6173,9 @@ MonoBehaviour:
   targeting: {fileID: 1144359915}
   playerAttack: {fileID: 1144359916}
   slashEffect: {fileID: 235057316}
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!58 &1144359922
 CircleCollider2D:
   m_ObjectHideFlags: 0

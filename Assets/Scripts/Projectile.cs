@@ -48,6 +48,11 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        {
+            Despawn();
+            return;
+        }
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy == null) return;
         Health health = other.GetComponent<Health>();

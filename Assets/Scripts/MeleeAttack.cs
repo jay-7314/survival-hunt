@@ -5,13 +5,14 @@ using UnityEngine.Rendering.Universal.Internal;
 
 public class MeleeAttack : MonoBehaviour
 {
-    [SerializeField] private float radius = 2f;     //°ËÀÌ ´ê´Â °Å¸®
-    [SerializeField] private float arcAngle = 90f;      //ºÎÃ¤²ÃÀÇ ÀüÃ¼°¢µµ
+    [SerializeField] private float radius = 2f;     //ê²€ì´ ë‹¿ëŠ” ê±°ë¦¬
+    [SerializeField] private float arcAngle = 90f;      //ë¶€ì±„ê¼´ì˜ ì „ì²´ê°ë„
     [SerializeField] private float knockbackForce = 8f;
     [SerializeField] private float cooldown = 0.8f;
     [SerializeField] private AutoTargeting targeting;
     [SerializeField] private PlayerAttack playerAttack;
     [SerializeField] private SwordSlashEffect slashEffect;
+    [SerializeField] private LayerMask wallMask;
 
     private float cooldownTimer;
     private InputAction meleeAction;
@@ -42,6 +43,11 @@ public class MeleeAttack : MonoBehaviour
         }
     }
 
+    private bool HasLineOfSight(Vector3 targetPosition)
+    {
+
+        return !Physics2D.Linecast(transform.position, targetPosition, wallMask);
+    }
     private bool IsInArc(Vector2 forward, Vector2 toTarget)
     {
         float angle = Vector2.Angle(forward, toTarget);
@@ -50,14 +56,14 @@ public class MeleeAttack : MonoBehaviour
 
     private List<Enemy> FindTargets(Vector2 forward)
     {
-        List<Enemy> result = new List<Enemy>();         //¸ÂÀºÀûÀÇ list
+        List<Enemy> result = new List<Enemy>();         //ë§ì€ì ì˜ list
 
         for(int i = 0; i<Enemy.All.Count; i++)
         {
             Enemy enemy = Enemy.All[i];
             Vector2 toTarget = enemy.transform.position - transform.position;
 
-            if(toTarget.magnitude <= radius && IsInArc(forward, toTarget))
+            if(toTarget.magnitude <= radius && IsInArc(forward, toTarget) && HasLineOfSight(enemy.transform.position))
             {
                 result.Add(enemy);
             }
@@ -78,7 +84,7 @@ public class MeleeAttack : MonoBehaviour
 
         for(int i =0; i< targets.Count; i++)
         {
-            Vector2 away = targets[i].transform.position- transform.position;       //³ª¿¡°Ô ÀûÀ¸·Î ÇâÇÏ´Â ¹æÇâ,
+            Vector2 away = targets[i].transform.position- transform.position;       //ë‚˜ì—ê²Œ ì ìœ¼ë¡œ í–¥í•˜ëŠ” ë°©í–¥,
             EnemyChase chase = targets[i].GetComponent<EnemyChase>();
             if (chase != null) chase.Knockback(away, knockbackForce);
             Health health = targets[i].GetComponent<Health>();
@@ -88,6 +94,6 @@ public class MeleeAttack : MonoBehaviour
             int finalDamage = Mathf.Max(1, Mathf.RoundToInt(playerAttack.CurrentDamage * multiplier));
             health.TakeDamage(finalDamage);
         }
-        Debug.Log($"°Ë°ø°İ :{targets.Count}¸¶¸®");
+        Debug.Log($"ê²€ê³µê²© :{targets.Count}ë§ˆë¦¬");
     }
 }

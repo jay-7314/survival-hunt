@@ -3,6 +3,7 @@ using UnityEngine;
 public class AutoTargeting : MonoBehaviour
 {
     [SerializeField] private float range = 8f;
+    [SerializeField] private LayerMask wallMask;
     private float bonusRange;
 
     public Enemy Current { get; private set; }
@@ -26,7 +27,7 @@ public class AutoTargeting : MonoBehaviour
         for (int i = 0; i < Enemy.All.Count; i++)
         {
             float sqr = (Enemy.All[i].transform.position - myPos).sqrMagnitude;
-            if (sqr < bestSqr)                   //가까운 적이 등장했을때 후보군 교체
+            if (sqr < bestSqr && !Physics2D.Linecast(myPos, Enemy.All[i].transform.position, wallMask))                   //가까운 적이 등장했을때 후보군 교체
             {
                 bestSqr = sqr;
                 nearest = Enemy.All[i];
