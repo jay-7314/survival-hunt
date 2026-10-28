@@ -17,6 +17,8 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private FlowField flowField;
     [SerializeField] private int roomCount = 3;
     [SerializeField] private int roomsize = 3;
+    [SerializeField] private int seed = 0;
+    [SerializeField] List<Vector2Int> pathCells = new List<Vector2Int>();
 
     private bool[,] isWall;         //true면 벽, false면 길
     private int width;
@@ -25,11 +27,16 @@ public class MazeGenerator : MonoBehaviour
 
     private void Awake()
     {
+        int usedSeed = seed;
+        if (usedSeed == 0) usedSeed = Random.Range(1, 1000000);
+        Random.InitState(usedSeed);
+        Debug.Log($"미로 시드{usedSeed}");
         Generate();
         PrintMaze();
         DrawMaze();
         SetCameraBounds();
         flowField.SetArea(-width / 2, -height / 2, width, height);
+        Random.InitState(System.Environment.TickCount);
     }
 
     private readonly Vector2Int[] directions =
@@ -87,6 +94,8 @@ public class MazeGenerator : MonoBehaviour
 
         startPoint.position = CellToWorld(startCell);
         goal.position = CellToWorld(goalCell);
+        pathCells = FindPath(startCell, goalCell);
+        Debug.Log($"a->b 길 {pathCells.Count}칸");
     }
 
     private void PrintMaze()
@@ -257,6 +266,46 @@ public class MazeGenerator : MonoBehaviour
         return farthest;
     }
 
+    private List<Vector2Int> FindPath(Vector2Int start, Vector2Int goalCell)
+    {
+        Vector2Int[,] cameFrom = new Vector2Int[cellsWide, cellsHigh];      //어느 칸에서 왔는지 적어둠
+        bool[,] seen = new bool[cellsWide, cellsHigh];
+
+        Queue<Vector2Int> queue = new Queue<Vector2Int>();
+        seen[start.x, start.y] = true;
+        queue.Enqueue(start);
+
+        while (queue.Count > 0)
+        {
+            Vector2Int current = queue.Dequeue();
+            if (current == goalCell) break;
+
+            for(int i = 0; i<directions.Length; i++)
+            {
+                Vector2Int next = current + directions[i];
+                if (next.x <0 || next.x >= cellsWide) continue;
+                if(next.y <0 || next.y>= cellsHigh) continue;
+                if (seen[next.x, next.y]) continue;
+                if(!IsOpenBetween(current, next)) continue;
+
+                seen[next.x, next.y] = true;
+                cameFrom[next.x, next.y] = current;
+                queue.Enqueue(next);
+            }
+        }
+        List<Vector2Int> result = new List<Vector2Int>();
+        Vector2Int step = goalCell;
+        while(step != start)
+        {
+            result.Add(step);
+            step = cameFrom[step.x, step.y];
+        }
+
+        result.Add(start);
+        result.Reverse();
+        return result;
+
+    }
     private Vector3 CellToWorld(Vector2Int cell)
     {
         Vector2Int tile = CellToTile(cell);
@@ -266,5 +315,14 @@ public class MazeGenerator : MonoBehaviour
         Vector3 a = floorTilemap.GetCellCenterWorld(first);
         Vector3 b = floorTilemap.GetCellCenterWorld(last);
         return (a + b) / 2f;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        for(int i = 0; i<pathCells.Count; i++)
+        {
+            Gizmos.DrawSphere(CellToWorld(pathCells[i]), 0.5f);
+        }
     }
 }

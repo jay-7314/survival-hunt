@@ -15,6 +15,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float minSpawnInterval = 0.5f;     //간격의 하한선
     [SerializeField] private float intervalDecreasePerSecond = 0.02f;           //1초가 지날때 간격이 줄어드는 양
     [SerializeField] private FlowField flowField;
+    [SerializeField] private float minDistanceFromPlayer = 3f;
     private float elapsed;      //게임시작후 흐른시간
 
     private ObjectPool<Enemy> pool;
@@ -55,7 +56,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void Spawn()
+    public Enemy Spawn()
     {
         for(int i = 0; i< maxSpawnTries; i++)
         {
@@ -63,11 +64,33 @@ public class EnemySpawner : MonoBehaviour
             Vector3Int cell = floorTilemap.WorldToCell(pos);
             if (!floorTilemap.HasTile(cell)) continue;
             if (Physics2D.OverlapCircle(pos, spawnCheckRadius, wallMask)) continue;
+            if(flowField != null && !flowField.IsReachable(pos)) continue;
 
             Enemy zombie = pool.Get();
             zombie.transform.position = pos;
-            return;
+            return zombie;
         }
+        return null;
     }
 
+    public Enemy SpawnInArea(Bounds area)
+    {
+        for (int i = 0; i < maxSpawnTries; i++)
+        {
+            Vector2 pos = new Vector2(
+                Random.Range(area.min.x, area.max.x),
+                Random.Range(area.min.y, area.max.y));
+
+            if (Vector2.Distance(pos, player.position) < minDistanceFromPlayer) continue;
+            Vector3Int cell = floorTilemap.WorldToCell(pos);
+            if (!floorTilemap.HasTile(cell)) continue;
+            if (Physics2D.OverlapCircle(pos, spawnCheckRadius, wallMask)) continue;
+            if (flowField != null && !flowField.IsReachable(pos)) continue;
+
+            Enemy zombie = pool.Get();
+            zombie.transform.position = pos;
+            return zombie;
+        }
+        return null;
+    }
 }

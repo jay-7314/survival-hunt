@@ -11,8 +11,8 @@ public class FlowField : MonoBehaviour
     [SerializeField] private int width = 24;
     [SerializeField] private int height = 14;
 
-
     private int[,] distance;
+    private Vector2Int lastPlayerCell = new Vector2Int(int.MinValue, int.MinValue);
 
     private void Awake()
     {
@@ -21,6 +21,10 @@ public class FlowField : MonoBehaviour
 
     private void Update()
     {
+        Vector2Int cell = WorldToGrid(player.position);
+        if (cell == lastPlayerCell) return;
+
+        lastPlayerCell = cell;
         Rebuild(player.position);
     }
 
@@ -89,6 +93,13 @@ public class FlowField : MonoBehaviour
         }
     }
 
+    public bool IsReachable(Vector2 worldPos)
+    {
+        Vector2Int g = WorldToGrid(worldPos);
+        if(!InBounds(g)) return false;
+        return distance[g.x, g.y] >= 0;
+    }
+
     //적의 월드좌표를 받아서 걸어가야 할 방향을 돌려줌
     public Vector2 GetDirection(Vector2 worldPos)
     {
@@ -141,8 +152,15 @@ public class FlowField : MonoBehaviour
     {
         minX = newMinX;
         minY = newMinY;
-        width = newHeight;
+        width = newWidth;
         height = newHeight;
         distance = new int[width, height];
+        lastPlayerCell = new Vector2Int(int.MaxValue, int.MinValue);
+    }
+
+    public void MarkDirty()
+    {
+        lastPlayerCell = WorldToGrid(player.position);
+        Rebuild(player.position);
     }
 }
