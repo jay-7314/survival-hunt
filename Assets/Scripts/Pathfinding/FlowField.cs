@@ -136,4 +136,13 @@ public class FlowField : MonoBehaviour
             }
         }
     }
+
+    public void SetArea(int newMinX, int newMinY, int newWidth, int newHeight)
+    {
+        minX = newMinX;
+        minY = newMinY;
+        width = newHeight;
+        height = newHeight;
+        distance = new int[width, height];
+    }
 }

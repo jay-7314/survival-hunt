@@ -27,4 +27,9 @@ public class CameraFollow : MonoBehaviour
         transform.position = pos;           //카메라를 옮김
     }
 
+    public void SetBounds(Vector2 newMin, Vector2 newMax)
+    {
+        minBonus = newMin;
+        maxBonus = newMax;
+    }
 }
