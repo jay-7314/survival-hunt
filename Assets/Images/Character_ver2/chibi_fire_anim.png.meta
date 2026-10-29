@@ -1,43 +1,55 @@
 fileFormatVersion: 2
-guid: e3364bcdd2981214a8a4c9bee5ee9ccc
+guid: 602c9a4a24ed56e4ca6efcbde841abe5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9117354335919739884
-    second: chibi_zombie_sheet_0
+      213: 533983864274006380
+    second: chibi_fire_anim_0
   - first:
-      213: 7520245310486574885
-    second: chibi_zombie_sheet_1
+      213: -589333583217383427
+    second: chibi_fire_anim_1
   - first:
-      213: 5564072402121256014
-    second: chibi_zombie_sheet_2
+      213: -7594781820764023256
+    second: chibi_fire_anim_2
   - first:
-      213: -731241439863527895
-    second: chibi_zombie_sheet_3
+      213: -6846952499794305199
+    second: chibi_fire_anim_3
   - first:
-      213: -5837672866290814185
-    second: chibi_zombie_sheet_4
+      213: 7799850741088909390
+    second: chibi_fire_anim_4
   - first:
-      213: 3129982185251550889
-    second: chibi_zombie_sheet_5
+      213: -3883609050766178692
+    second: chibi_fire_anim_5
   - first:
-      213: 8373252328161520744
-    second: chibi_zombie_sheet_6
+      213: 708633132469107229
+    second: chibi_fire_anim_6
   - first:
-      213: -1439948293420017504
-    second: chibi_zombie_sheet_7
+      213: 4427060060699427937
+    second: chibi_fire_anim_7
   - first:
-      213: -2578425416244181433
-    second: chibi_zombie_sheet_8
+      213: 1644154591070169746
+    second: chibi_fire_anim_8
   - first:
-      213: -2552860899460169248
-    second: chibi_zombie_sheet_9
+      213: 915905448238542022
+    second: chibi_fire_anim_9
   - first:
-      213: 2361408120780221936
-    second: chibi_zombie_sheet_10
+      213: 1544098705172121078
+    second: chibi_fire_anim_10
   - first:
-      213: -7744597215530045944
-    second: chibi_zombie_sheet_11
+      213: -6832000086877097612
+    second: chibi_fire_anim_11
+  - first:
+      213: -3460921431635855132
+    second: chibi_fire_anim_12
+  - first:
+      213: -8999139913210934499
+    second: chibi_fire_anim_13
+  - first:
+      213: 1585387151571123995
+    second: chibi_fire_anim_14
+  - first:
+      213: 2159143034703065538
+    second: chibi_fire_anim_15
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -84,7 +96,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -146,7 +158,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chibi_zombie_sheet_0
+      name: chibi_fire_anim_0
       rect:
         serializedVersion: 2
         x: 0
@@ -161,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ce31dd37679578e70800000000000000
-      internalID: 9117354335919739884
+      spriteID: c61b7d1de77196700800000000000000
+      internalID: 533983864274006380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_zombie_sheet_1
+      name: chibi_fire_anim_1
       rect:
         serializedVersion: 2
         x: 32
@@ -183,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 527795314474d5860800000000000000
-      internalID: 7520245310486574885
+      spriteID: df7ae1e7a3442d7f0800000000000000
+      internalID: -589333583217383427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_zombie_sheet_2
+      name: chibi_fire_anim_2
       rect:
         serializedVersion: 2
         x: 64
@@ -205,14 +217,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e4cedf8be5e873d40800000000000000
-      internalID: 5564072402121256014
+      spriteID: 82614c24c2ae99690800000000000000
+      internalID: -7594781820764023256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_zombie_sheet_3
+      name: chibi_fire_anim_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15f99c76afcbaf0a0800000000000000
+      internalID: -6846952499794305199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_fire_anim_4
       rect:
         serializedVersion: 2
         x: 0
@@ -227,14 +261,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 926a3e3e8cb1ad5f0800000000000000
-      internalID: -731241439863527895
+      spriteID: e48fba37ce2ae3c60800000000000000
+      internalID: 7799850741088909390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_zombie_sheet_4
+      name: chibi_fire_anim_5
       rect:
         serializedVersion: 2
         x: 32
@@ -249,14 +283,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 713bcc9157b6cfea0800000000000000
-      internalID: -5837672866290814185
+      spriteID: c7607920526aa1ac0800000000000000
+      internalID: -3883609050766178692
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_zombie_sheet_5
+      name: chibi_fire_anim_6
       rect:
         serializedVersion: 2
         x: 64
@@ -271,14 +305,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9a63831d63eef6b20800000000000000
-      internalID: 3129982185251550889
+      spriteID: d1ab4e8541295d900800000000000000
+      internalID: 708633132469107229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_zombie_sheet_6
+      name: chibi_fire_anim_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1640f4d6ba3107d30800000000000000
+      internalID: 4427060060699427937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_fire_anim_8
       rect:
         serializedVersion: 2
         x: 0
@@ -293,14 +349,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 86ca7ca01a4c33470800000000000000
-      internalID: 8373252328161520744
+      spriteID: 29aa094b3e531d610800000000000000
+      internalID: 1644154591070169746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_zombie_sheet_7
+      name: chibi_fire_anim_9
       rect:
         serializedVersion: 2
         x: 32
@@ -315,14 +371,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0a815c308a6440ce0800000000000000
-      internalID: -1439948293420017504
+      spriteID: 6cc6a1a0723f5bc00800000000000000
+      internalID: 915905448238542022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_zombie_sheet_8
+      name: chibi_fire_anim_10
       rect:
         serializedVersion: 2
         x: 64
@@ -337,14 +393,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7464de8beb7973cd0800000000000000
-      internalID: -2578425416244181433
+      spriteID: 6f5cce3679dbd6510800000000000000
+      internalID: 1544098705172121078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_zombie_sheet_9
+      name: chibi_fire_anim_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 471b0445e1cdf21a0800000000000000
+      internalID: -6832000086877097612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_fire_anim_12
       rect:
         serializedVersion: 2
         x: 0
@@ -359,14 +437,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0e141be998a629cd0800000000000000
-      internalID: -2552860899460169248
+      spriteID: 4e8fecf6b4658ffc0800000000000000
+      internalID: -3460921431635855132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_zombie_sheet_10
+      name: chibi_fire_anim_13
       rect:
         serializedVersion: 2
         x: 32
@@ -381,14 +459,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0fde3d0bc2865c020800000000000000
-      internalID: 2361408120780221936
+      spriteID: d1bc50dade1ac1380800000000000000
+      internalID: -8999139913210934499
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_zombie_sheet_11
+      name: chibi_fire_anim_14
       rect:
         serializedVersion: 2
         x: 64
@@ -403,8 +481,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80e2ad77dd9a58490800000000000000
-      internalID: -7744597215530045944
+      spriteID: b1f7dd0f63d600610800000000000000
+      internalID: 1585387151571123995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_fire_anim_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c13cb28621d6fd10800000000000000
+      internalID: 2159143034703065538
       vertices: []
       indices: 
       edges: []
@@ -413,7 +513,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fdc6b9727d08bb74daead46602bdffdf
+    spriteID: b2aa06b8ee8d72c428fb2d2c61501261
     internalID: 0
     vertices: []
     indices: 
@@ -425,18 +525,22 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      chibi_zombie_sheet_0: 9117354335919739884
-      chibi_zombie_sheet_1: 7520245310486574885
-      chibi_zombie_sheet_10: 2361408120780221936
-      chibi_zombie_sheet_11: -7744597215530045944
-      chibi_zombie_sheet_2: 5564072402121256014
-      chibi_zombie_sheet_3: -731241439863527895
-      chibi_zombie_sheet_4: -5837672866290814185
-      chibi_zombie_sheet_5: 3129982185251550889
-      chibi_zombie_sheet_6: 8373252328161520744
-      chibi_zombie_sheet_7: -1439948293420017504
-      chibi_zombie_sheet_8: -2578425416244181433
-      chibi_zombie_sheet_9: -2552860899460169248
+      chibi_fire_anim_0: 533983864274006380
+      chibi_fire_anim_1: -589333583217383427
+      chibi_fire_anim_10: 1544098705172121078
+      chibi_fire_anim_11: -6832000086877097612
+      chibi_fire_anim_12: -3460921431635855132
+      chibi_fire_anim_13: -8999139913210934499
+      chibi_fire_anim_14: 1585387151571123995
+      chibi_fire_anim_15: 2159143034703065538
+      chibi_fire_anim_2: -7594781820764023256
+      chibi_fire_anim_3: -6846952499794305199
+      chibi_fire_anim_4: 7799850741088909390
+      chibi_fire_anim_5: -3883609050766178692
+      chibi_fire_anim_6: 708633132469107229
+      chibi_fire_anim_7: 4427060060699427937
+      chibi_fire_anim_8: 1644154591070169746
+      chibi_fire_anim_9: 915905448238542022
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

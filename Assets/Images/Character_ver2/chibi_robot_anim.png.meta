@@ -1,43 +1,19 @@
 fileFormatVersion: 2
-guid: 6b95525f364101a4297250a467184f66
+guid: dc1d03bf2f8f1844bbc616608e26dcf0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8785583686544519729
-    second: chibi_wind_sheet_0
+      213: 3877299277807924173
+    second: chibi_robot_anim_0
   - first:
-      213: 681365491439065426
-    second: chibi_wind_sheet_1
+      213: 7244774284333870143
+    second: chibi_robot_anim_1
   - first:
-      213: -6250831757516040627
-    second: chibi_wind_sheet_2
+      213: -8245543305946643490
+    second: chibi_robot_anim_2
   - first:
-      213: 3922223373418815128
-    second: chibi_wind_sheet_3
-  - first:
-      213: -4856403842224316620
-    second: chibi_wind_sheet_4
-  - first:
-      213: 4288865718232489753
-    second: chibi_wind_sheet_5
-  - first:
-      213: 7639242311614964831
-    second: chibi_wind_sheet_6
-  - first:
-      213: -6469109853229756567
-    second: chibi_wind_sheet_7
-  - first:
-      213: -526113371722469542
-    second: chibi_wind_sheet_8
-  - first:
-      213: 1815829891127131813
-    second: chibi_wind_sheet_9
-  - first:
-      213: -26999109927220888
-    second: chibi_wind_sheet_10
-  - first:
-      213: 2096309994885424769
-    second: chibi_wind_sheet_11
+      213: 1664023444046675859
+    second: chibi_robot_anim_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -84,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -146,7 +122,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chibi_wind_sheet_0
+      name: chibi_robot_anim_0
       rect:
         serializedVersion: 2
         x: 0
@@ -161,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fcd0c036f26531680800000000000000
-      internalID: -8785583686544519729
+      spriteID: dc3be9d762feec530800000000000000
+      internalID: 3877299277807924173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_wind_sheet_1
+      name: chibi_robot_anim_1
       rect:
         serializedVersion: 2
         x: 32
@@ -183,14 +159,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2595f6fed42b47900800000000000000
-      internalID: 681365491439065426
+      spriteID: f3cea9fb3db9a8460800000000000000
+      internalID: 7244774284333870143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_wind_sheet_2
+      name: chibi_robot_anim_2
       rect:
         serializedVersion: 2
         x: 64
@@ -205,14 +181,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d46968682a59049a0800000000000000
-      internalID: -6250831757516040627
+      spriteID: ed343fccc02f19d80800000000000000
+      internalID: -8245543305946643490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_wind_sheet_3
+      name: chibi_robot_anim_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39ff258818cc71710800000000000000
+      internalID: 1664023444046675859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_robot_anim_4
       rect:
         serializedVersion: 2
         x: 0
@@ -225,16 +223,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 89edc5690698e6630800000000000000
-      internalID: 3922223373418815128
+      spriteID: b68bc3bac81419149b5b6875f785bdac
+      internalID: -2025133991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_wind_sheet_4
+      name: chibi_robot_anim_5
       rect:
         serializedVersion: 2
         x: 32
@@ -247,16 +245,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 43f90629f669a9cb0800000000000000
-      internalID: -4856403842224316620
+      spriteID: 5b760ac105258bd4fb7f8b63e252078c
+      internalID: -410345468
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_wind_sheet_5
+      name: chibi_robot_anim_6
       rect:
         serializedVersion: 2
         x: 64
@@ -269,16 +267,38 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 91f1998b5ac158b30800000000000000
-      internalID: 4288865718232489753
+      spriteID: d2b2df3ddc6c3404a9d14d0385535856
+      internalID: 1312654222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_wind_sheet_6
+      name: chibi_robot_anim_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79c73731a04f0f84c9b93a86426efb67
+      internalID: 2130204249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_robot_anim_8
       rect:
         serializedVersion: 2
         x: 0
@@ -291,16 +311,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f54a1f0786a040a60800000000000000
-      internalID: 7639242311614964831
+      spriteID: 9befa6db17347e945a74d16b31dba873
+      internalID: 501281598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_wind_sheet_7
+      name: chibi_robot_anim_9
       rect:
         serializedVersion: 2
         x: 32
@@ -313,16 +333,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 96fc2410dda1936a0800000000000000
-      internalID: -6469109853229756567
+      spriteID: f086a12d9cf76d44391a314f0326870e
+      internalID: -290051603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_wind_sheet_8
+      name: chibi_robot_anim_10
       rect:
         serializedVersion: 2
         x: 64
@@ -335,16 +355,38 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a5f26e60daed2b8f0800000000000000
-      internalID: -526113371722469542
+      spriteID: 7b970b24259bf094596aa631b0a3b50b
+      internalID: 234740891
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_wind_sheet_9
+      name: chibi_robot_anim_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fe2b95daaa3b484fb3edfe28bcbc416
+      internalID: -764438521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_robot_anim_12
       rect:
         serializedVersion: 2
         x: 0
@@ -357,16 +399,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5ae3b215aaf133910800000000000000
-      internalID: 1815829891127131813
+      spriteID: 4f19b8f606850ab48ad6e1e29e1ba33b
+      internalID: 543192069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_wind_sheet_10
+      name: chibi_robot_anim_13
       rect:
         serializedVersion: 2
         x: 32
@@ -379,16 +421,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 869498bd37410aff0800000000000000
-      internalID: -26999109927220888
+      spriteID: 8de0587436fe155499301cb8baf2d787
+      internalID: 1160507557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi_wind_sheet_11
+      name: chibi_robot_anim_14
       rect:
         serializedVersion: 2
         x: 64
@@ -401,10 +443,32 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1862f3865d6971d10800000000000000
-      internalID: 2096309994885424769
+      spriteID: 005b60379aeda6f4ba99acd82b94f4ca
+      internalID: -864657644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_robot_anim_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f2b8df15b526c24585265ffadfeeff6
+      internalID: 1789804189
       vertices: []
       indices: 
       edges: []
@@ -413,7 +477,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: adee0e4a9bbd3ac458655471e12b0b90
+    spriteID: 0e2aa5af89a2d82439be3c52c506efda
     internalID: 0
     vertices: []
     indices: 
@@ -425,18 +489,22 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      chibi_wind_sheet_0: -8785583686544519729
-      chibi_wind_sheet_1: 681365491439065426
-      chibi_wind_sheet_10: -26999109927220888
-      chibi_wind_sheet_11: 2096309994885424769
-      chibi_wind_sheet_2: -6250831757516040627
-      chibi_wind_sheet_3: 3922223373418815128
-      chibi_wind_sheet_4: -4856403842224316620
-      chibi_wind_sheet_5: 4288865718232489753
-      chibi_wind_sheet_6: 7639242311614964831
-      chibi_wind_sheet_7: -6469109853229756567
-      chibi_wind_sheet_8: -526113371722469542
-      chibi_wind_sheet_9: 1815829891127131813
+      chibi_robot_anim_0: 3877299277807924173
+      chibi_robot_anim_1: 7244774284333870143
+      chibi_robot_anim_10: 234740891
+      chibi_robot_anim_11: -764438521
+      chibi_robot_anim_12: 543192069
+      chibi_robot_anim_13: 1160507557
+      chibi_robot_anim_14: -864657644
+      chibi_robot_anim_15: 1789804189
+      chibi_robot_anim_2: -8245543305946643490
+      chibi_robot_anim_3: 1664023444046675859
+      chibi_robot_anim_4: -2025133991
+      chibi_robot_anim_5: -410345468
+      chibi_robot_anim_6: 1312654222
+      chibi_robot_anim_7: 2130204249
+      chibi_robot_anim_8: 501281598
+      chibi_robot_anim_9: -290051603
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
