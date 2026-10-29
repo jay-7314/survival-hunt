@@ -6,17 +6,20 @@ public class GateWave : MonoBehaviour
 {
     [SerializeField] private GateController gate;
     [SerializeField] private int enemyCount = 10;
-    [SerializeField] private EnemySpawner[] spawners;
     [SerializeField] private Collider2D area;
-    [SerializeField] private TextMeshProUGUI remainText;
+
+    private EnemySpawner[] spawners;
+    private TextMeshProUGUI remainText;
 
     private bool started;
     private int waveTotal;
 
     private readonly List<Enemy> waveEnemies = new List<Enemy>();
 
-    private void Awake()
+    public void Init(EnemySpawner[] spawnerList, TextMeshProUGUI text)
     {
+        spawners = spawnerList;
+        remainText = text;
         if(remainText != null) remainText.gameObject.SetActive(false);
     }
     private void OnEnable()

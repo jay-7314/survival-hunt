@@ -1,50 +1,49 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class GateController : MonoBehaviour
 {
-    [SerializeField] private Tilemap wallTilemap;
-    [SerializeField] private TileBase gateTile;
-    [SerializeField] private FlowField flowField;
-    [SerializeField] private Transform marker;
-    [SerializeField]
-    private Vector3Int[] offsets =          //어느칸을 막을지
-    {
-        new Vector3Int(0,0,0),
-        new Vector3Int(1,0,0)
-    };
-
-    private Vector3Int[] closedCells;       //닫을때 실제로 칠할곳
+    private Tilemap wallTilemap;
+    private TileBase gateTile;
+    private FlowField flowField;
+    private List<Vector3Int> cells = new List<Vector3Int>();       // 막을 칸들
+    private MinimapWallBuilder minimap;
 
     public bool IsOpen { get; private set; } = true;
+
+    public void Init(Tilemap wall, TileBase tile, FlowField field, List<Vector3Int> gateCells)
+    {
+        wallTilemap = wall;
+        gateTile = tile;
+        flowField = field;
+        cells = gateCells;
+        minimap = FindFirstObjectByType<MinimapWallBuilder>();      //프리팹은 씬 물건을 들고 있을수 없어서 생성할떄 찾게함.
+    }
 
     [ContextMenu("Close")]
     public void Close()
     {
-        Vector3Int origin = wallTilemap.WorldToCell(marker.position);
-        closedCells = new Vector3Int[offsets.Length];
-
-        for(int i = 0; i<offsets.Length; i++)
+        for (int i = 0; i < cells.Count; i++)
         {
-            closedCells[i] = origin+offsets[i];
-            wallTilemap.SetTile(closedCells[i], gateTile);
+            wallTilemap.SetTile(cells[i], gateTile);
         }
 
         IsOpen = false;
         flowField.MarkDirty();
+        if (minimap != null) minimap.Build();           //타일맵의 현재 모양으로 미니맵 벽을 전부 다시 그림.
     }
 
     [ContextMenu("Open")]
     public void Open()
     {
-        if (closedCells == null) return;
-
-        for(int i = 0; i<closedCells.Length; i++)
+        for (int i = 0; i < cells.Count; i++)
         {
-            wallTilemap.SetTile(closedCells[i], null);
+            wallTilemap.SetTile(cells[i], null);
         }
 
         IsOpen = true;
         flowField.MarkDirty();
+        if(minimap!= null) minimap.Build();
     }
 }
