@@ -12,7 +12,6 @@ public class TitleMenu : MonoBehaviour
 
     public void OnStartClicked()
     {
-        Debug.Log("시작 클릭됨");
         StartCoroutine(ShowPanel(selectPanel));
     }
 

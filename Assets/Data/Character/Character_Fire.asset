@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Character_Fire
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: "\uBD88\uC758 \uC0AC\uB0E5\uAFBC"
+  description: "\uBD88\uC758 \uC6D0\uC18C\uB97C \uAC16\uACE0\uC788\uB294 \uCF00\uB9AD\uD130\uC785\uB2C8\uB2E4.\n\uAE30\uBCF8
+    \uACF5\uACA9\uB825\uC774 \uAC15\uD558\uAC8C \uC2DC\uC791\uD569\uB2C8\uB2E4."
   moveSpeed: 4
   baseDamage: 2
   maxHealth: 12

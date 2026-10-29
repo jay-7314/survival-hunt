@@ -10,14 +10,22 @@ public class CharacterLoader : MonoBehaviour
 
     private void Start()
     {
-        playerMove.ApplyCharacter(character);
-        playerAttack.ApplyCharacter(character);
-        playerHealth .ApplyCharacter(character);
+        CharacterData chosen = character;
+
+        if(GameSession.selectedCharacter != null)
+        {
+            chosen = GameSession.selectedCharacter;
+        }
+        Debug.Log($"케릭터 :{chosen.CharacterName}");
+
+        playerMove.ApplyCharacter(chosen);
+        playerAttack.ApplyCharacter(chosen);
+        playerHealth .ApplyCharacter(chosen);
 
         //기본 능력치를 일단 적용하기 위해서 함수의 위치도 중요함.
         if(character.StartingCard != null)
         {
-            cardManager.TrySelect(character.StartingCard);
+            cardManager.TrySelect(chosen.StartingCard);
         }
     }
 }
