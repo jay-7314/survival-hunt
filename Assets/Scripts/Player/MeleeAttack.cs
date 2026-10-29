@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal.Internal;
@@ -13,9 +14,12 @@ public class MeleeAttack : MonoBehaviour
     [SerializeField] private PlayerAttack playerAttack;
     [SerializeField] private SwordSlashEffect slashEffect;
     [SerializeField] private LayerMask wallMask;
+    [SerializeField] private PressButton swingButton;
 
     private float cooldownTimer;
     private InputAction meleeAction;
+
+    public float CooldownRatio => Mathf.Clamp01(cooldownTimer / cooldown);
 
     private void Awake()
     {
@@ -37,7 +41,10 @@ public class MeleeAttack : MonoBehaviour
     private void Update()
     {
         cooldownTimer = Mathf.Max(0f, cooldownTimer - Time.deltaTime);
-        if(meleeAction.IsPressed() && cooldownTimer <= 0f)
+
+        bool buttonPressed = swingButton != null && swingButton.ConsumePress();
+        bool wantsSwing = meleeAction.WasPressedThisFrame() || buttonPressed;
+        if (wantsSwing && cooldownTimer <= 0f)
         {
             Swing();
         }

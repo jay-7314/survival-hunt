@@ -1,9 +1,11 @@
+using NUnit.Framework.Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private VirtualJoyStick joyStick;
     private float bonusMoveSpeed;
     private Rigidbody2D rb;
     private Vector2 input;
@@ -28,8 +30,14 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        input = moveAction.ReadValue<Vector2>();
+        Vector2 move = moveAction.ReadValue<Vector2>();
+        if (joyStick != null && joyStick.Direction != Vector2.zero)
+        {
+            move = joyStick.Direction;
+        }
+        input = move;
     }
+
 
     private void FixedUpdate()
     {

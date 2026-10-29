@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Projectile projectilePrefabs;
     [SerializeField] private int baseDamage = 1;
     [SerializeField] private float attackCooldown = 0.5f;
+    [SerializeField] private PressButton fireButton;
 
     public int CurrentDamage => baseDamage + bonusDamage;
     public Element CurrentElement => attackElement;
@@ -19,6 +20,8 @@ public class PlayerAttack : MonoBehaviour
     private ObjectPool<Projectile> pool;
     private int bonusDamage;
     private float bonusAttackSpeed;
+
+    public float CooldownRatio => Mathf.Clamp01(cooldownTimer / CurrentCooldown);
 
     private void Awake()
     {
@@ -57,17 +60,13 @@ public class PlayerAttack : MonoBehaviour
     private void Update()
     {
         cooldownTimer = Mathf.Max(0f, cooldownTimer - Time.deltaTime);
-
-        if(attackAction.IsPressed() && cooldownTimer <= 0f)
+        bool buttonPressed = fireButton != null && fireButton.ConsumePress();
+        bool wantsFire = attackAction.WasPressedThisFrame() || buttonPressed;
+        if (wantsFire && cooldownTimer <= 0f)
         {
             TryFire();
         }
 
-        // 누른 순간에만 참이라 꾹 눌러도 한 번만 발사된다
-        if (attackAction.WasPressedThisFrame())
-        {
-            TryFire();
-        }
     }
 
     public void SetAttackElement(Element element)

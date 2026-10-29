@@ -7,13 +7,23 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 3;
     public event Action Died;
+    public event Action<int, int> Changed;
+
     private int currentHealth;
     private int bonusMaxHealth;
 
+    public int Current => currentHealth;
+    public int Max => maxHealth + bonusMaxHealth;
 
     private void OnEnable()
     {
         currentHealth = maxHealth+bonusMaxHealth;
+        NotifyChanged();
+    }
+    
+    private void NotifyChanged()
+    {
+        Changed?.Invoke(currentHealth, Max);
     }
 
     public void TakeDamage(int amount)
@@ -42,6 +52,7 @@ public class Health : MonoBehaviour
         maxHealth += amount;
         currentHealth += amount;
         Debug.Log($"최대체력 : {maxHealth}");
+        NotifyChanged();
     }
 
     public void SetMaxHealthBonus(int bonus)
@@ -53,6 +64,7 @@ public class Health : MonoBehaviour
         else currentHealth = Mathf.Min(currentHealth, maxHealth + bonusMaxHealth);
 
         Debug.Log($"최대체력: {maxHealth+ bonusMaxHealth} /현재체력 {currentHealth}");
+        NotifyChanged();
     }
 
     public void ApplyCharacter(CharacterData data)
@@ -60,6 +72,7 @@ public class Health : MonoBehaviour
         maxHealth = data.MaxHealth;
         currentHealth = maxHealth + bonusMaxHealth;
         Debug.Log($"케릭터 적용 : 최대체력 {maxHealth + bonusMaxHealth}");
+        NotifyChanged();
     }
 
     public void Heal(int amount)
@@ -68,5 +81,12 @@ public class Health : MonoBehaviour
 
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth + bonusMaxHealth);
         Debug.Log($"체력 회복 : {currentHealth} / {maxHealth + bonusMaxHealth}");
+        NotifyChanged();
+    }
+
+    [ContextMenu("Take 1 Damage")]
+    private void TestDamage()
+    {
+        TakeDamage(1);
     }
 }

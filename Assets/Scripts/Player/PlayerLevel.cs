@@ -9,6 +9,11 @@ public class PlayerLevel : MonoBehaviour
     private int currentExp;
     public event Action<int> LeveledUp;     //객체 하나하나 자기채널을 가짐.
 
+    public event Action<int, int> ExpChanged;
+
+    public int Level => level;
+    public int CurrentExp => currentExp;
+    public int ExpToNext => expToNextLevel;
 
     private void OnEnable()
     {
@@ -34,6 +39,7 @@ public class PlayerLevel : MonoBehaviour
         {
             LevelUp();
         }
+        ExpChanged?.Invoke(currentExp, expToNextLevel);
     }
 
     private void LevelUp()
