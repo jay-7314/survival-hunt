@@ -5,6 +5,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private Vector2 minBonus;
     [SerializeField] private Vector2 maxBonus;
+    [SerializeField] private float margin = 12f;
     private Camera cam;
 
     private void Awake()
@@ -21,8 +22,8 @@ public class CameraFollow : MonoBehaviour
 
         
         Vector3 pos = target.position;      //플레이어 위치 저장
-        pos.x = Mathf.Clamp(pos.x, minBonus.x + halfWidth, maxBonus.x - halfWidth);
-        pos.y = Mathf.Clamp(pos.y, minBonus.y + halfHeight, maxBonus.y - halfHeight);
+        pos.x = Mathf.Clamp(pos.x, minBonus.x + halfWidth - margin, maxBonus.x - halfWidth + margin);
+        pos.y = Mathf.Clamp(pos.y, minBonus.y + halfHeight - margin, maxBonus.y - halfHeight + margin);
         pos.z = transform.position.z;       //z만 카메라 원래값으로 되돌림
         transform.position = pos;           //카메라를 옮김
     }

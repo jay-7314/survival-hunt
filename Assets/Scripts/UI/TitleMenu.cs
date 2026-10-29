@@ -1,0 +1,55 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class TitleMenu : MonoBehaviour
+{
+    [SerializeField] private GameObject titlePanel;
+    [SerializeField] private GameObject selectPanel;
+    [SerializeField] private GameObject dailyPanel;
+    [SerializeField] private Fader fader;
+    [SerializeField] private int gameSceneIndex = 1;
+
+    public void OnStartClicked()
+    {
+        Debug.Log("시작 클릭됨");
+        StartCoroutine(ShowPanel(selectPanel));
+    }
+
+    public void OnDailyClicked()
+    {
+        StartCoroutine(ShowPanel(dailyPanel));
+    }
+
+    public void OnBackClicked()
+    {
+        StartCoroutine(ShowPanel(titlePanel));
+    }
+
+    public void OnPlayClicked()
+    {
+        StartCoroutine(LoadGame());
+    }
+
+    public void OnQuitClicked()
+    {
+        Application.Quit();
+    }
+
+    private IEnumerator ShowPanel(GameObject target)
+    {
+        yield return fader.FadeOut();
+        titlePanel.SetActive(false);
+        selectPanel.SetActive(false);
+        dailyPanel.SetActive(false);
+        target.SetActive(true);
+        yield return fader.FadeIn();
+    }
+
+    private IEnumerator LoadGame()
+    {
+        yield return fader.FadeOut();
+        SceneManager.LoadScene(gameSceneIndex);
+    }
+    
+}
