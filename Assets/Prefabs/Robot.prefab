@@ -19,7 +19,7 @@ PrefabInstance:
     - target: {fileID: 2299776011207911529, guid: 23114aa49a22ffd44b21a767f91d71e1, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: 8a98f870e04e94143af47edb5ca323ae, type: 2}
+      objectReference: {fileID: 22100000, guid: 97cd75aba7ac0ee47b034df20178a2bd, type: 2}
     - target: {fileID: 2507581663292582114, guid: 23114aa49a22ffd44b21a767f91d71e1, type: 3}
       propertyPath: m_Name
       value: Robot

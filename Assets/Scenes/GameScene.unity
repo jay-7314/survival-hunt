@@ -10685,13 +10685,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144359909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1639168c2ec5dd94a8621ff6d6253628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimation
-  anim: {fileID: 1144359913}
-  spriteRenderer: {fileID: 1144359911}
 --- !u!114 &1144359915
 MonoBehaviour:
   m_ObjectHideFlags: 0
