@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -37,6 +36,7 @@ public class MazeGenerator : MonoBehaviour
     private void Awake()
     {
         int usedSeed = seed;
+        if(GameSession.isDaily) usedSeed = GameSession.dailySeed;
         if (usedSeed == 0) usedSeed = Random.Range(1, 1000000);
         Random.InitState(usedSeed);
         Debug.Log($"미로 시드{usedSeed}");

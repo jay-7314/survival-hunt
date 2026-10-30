@@ -21,3 +21,4 @@ MonoBehaviour:
   maxHealth: 8
   attackCooldown: 0.4
   startingCard: {fileID: 11400000, guid: 6e6748893a20d894098b0265473963bf, type: 2}
+  animatorController: {fileID: 22100000, guid: e070a52455030554c95639f1903cc2b2, type: 2}

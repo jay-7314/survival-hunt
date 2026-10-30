@@ -6,6 +6,7 @@ public class CharacterSelectUI : MonoBehaviour
 {
     [SerializeField] private CharacterData[] characters;
     [SerializeField] private Outline[] cardOutlines;
+    [SerializeField] private Animator[] cardAnimators;
     [SerializeField] private TextMeshProUGUI infoText;
 
     private int selectedIndex = 0;
@@ -26,6 +27,11 @@ public class CharacterSelectUI : MonoBehaviour
         for(int i = 0; i < cardOutlines.Length; i++)
         {
             cardOutlines[i].enabled = (i == index);
+        }
+
+        for(int i = 0; i<cardAnimators.Length; i++)
+        {
+            cardAnimators[i].SetBool("IsWalking", i == index);
         }
     }
 }

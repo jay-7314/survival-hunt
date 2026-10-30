@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameOverListener : MonoBehaviour
 {
     [SerializeField] private Health playerHealth;
+    [SerializeField] private GameObject gameOverPanel;
     private bool isGameOver;
 
     private void OnEnable()
@@ -20,17 +21,28 @@ public class GameOverListener : MonoBehaviour
     private void Update()
     {
         if (!isGameOver) return;
-        if (Keyboard.current.rKey.wasPressedThisFrame)
+        if (Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame)
         {
-            Time.timeScale = 1f;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);               //GetActiveScene().buildIndex ->지금 열려있는 씬의 번호
+            Restart();
         }
     }
 
     private void HandlePlayerDied()
     {
         isGameOver = true;
-        Debug.Log("게임오버 - R 키로 재시작");
         Time.timeScale = 0f;                    //게임속 속도
+        gameOverPanel.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);               //GetActiveScene().buildIndex ->지금 열려있는 씬의 번호
+    }
+
+    public void GoTitle()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
     }
 }

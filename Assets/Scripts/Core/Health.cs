@@ -32,7 +32,7 @@ public class Health : MonoBehaviour
 
         currentHealth -= amount;
         Debug.Log($"{name} 체력 {currentHealth}");
-
+        NotifyChanged();
         if(currentHealth <= 0)
         {
             Die();
