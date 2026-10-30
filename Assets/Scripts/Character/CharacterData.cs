@@ -10,7 +10,9 @@ public class CharacterData : ScriptableObject
     [SerializeField] private int maxHealth = 10;
     [SerializeField] private float attackCooldown = 0.5f;
     [SerializeField] private CardData startingCard;
+    [SerializeField] private RuntimeAnimatorController animatorController;
 
+    public RuntimeAnimatorController AnimatorController => animatorController;
     public string CharacterName => characterName;
     public string Description => description;
     public float MoveSpeed => moveSpeed;

@@ -7,6 +7,7 @@ public class CharacterLoader : MonoBehaviour
     [SerializeField] private PlayerMove playerMove;
     [SerializeField] private PlayerAttack playerAttack;
     [SerializeField] private Health playerHealth;
+    [SerializeField] private Animator playerAnimator;
 
     private void Start()
     {
@@ -22,7 +23,12 @@ public class CharacterLoader : MonoBehaviour
         playerAttack.ApplyCharacter(chosen);
         playerHealth .ApplyCharacter(chosen);
 
-        //기본 능력치를 일단 적용하기 위해서 함수의 위치도 중요함.
+        if(chosen.AnimatorController != null)
+        {
+            playerAnimator.runtimeAnimatorController = chosen.AnimatorController;
+        }
+
+        //고른 캐릭터를 검사
         if(character.StartingCard != null)
         {
             cardManager.TrySelect(chosen.StartingCard);
