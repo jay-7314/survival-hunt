@@ -108,6 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   speed: 3
   lifeTime: 2
+  damage: 1
+  hitEffectPrefab: {fileID: 40737569474099404, guid: 3dc466501a181694f8e78acc550b8ec9, type: 3}
 --- !u!50 &-6923866614200217984
 Rigidbody2D:
   serializedVersion: 5

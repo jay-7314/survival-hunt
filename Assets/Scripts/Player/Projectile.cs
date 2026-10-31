@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float speed = 10f;
     [SerializeField] private float lifeTime = 2f;
     [SerializeField] private int damage = 1;
+    [SerializeField] private GameObject hitEffectPrefab;
 
     private Element element;
     private ObjectPool<Projectile> pool;
@@ -61,7 +62,12 @@ public class Projectile : MonoBehaviour
             float multiplier = ElementChart.GetMultiplier(element, enemy.Element);
             int finalDamage = Mathf.Max(1, Mathf.RoundToInt(damage * multiplier));
 
-            health.TakeDamage(damage);
+            health.TakeDamage(finalDamage);
+        }
+        if(hitEffectPrefab != null)
+        {
+            SoundManager.Instance.Play(Sfx.Hit);
+            Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
         }
         Despawn();
   

@@ -95,6 +95,7 @@ public class PlayerAttack : MonoBehaviour
         // 재사용된 총알은 이전 위치에 남아 있어서 위치를 다시 정해 준다
         bullet.transform.position = transform.position;
         bullet.Launch(direction, baseDamage + bonusDamage, attackElement);
+        SoundManager.Instance.Play(Sfx.Shoot);
         cooldownTimer = CurrentCooldown;
     }
 

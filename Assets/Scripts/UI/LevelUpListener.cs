@@ -35,7 +35,7 @@ public class LevelUpListener : MonoBehaviour
         {
             cardTexts[i].text = $"{currentCards[i].CardName}\n{currentCards[i].Description}";
         }
-
+        SoundManager.Instance.Play(Sfx.LevelUp);
         cardPanel.SetActive(true);
         Time.timeScale = 0f;
     }

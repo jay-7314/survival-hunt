@@ -15,6 +15,7 @@ public class MeleeAttack : MonoBehaviour
     [SerializeField] private SwordSlashEffect slashEffect;
     [SerializeField] private LayerMask wallMask;
     [SerializeField] private PressButton swingButton;
+    [SerializeField] private GameObject hitEffectPrefab;
 
     private float cooldownTimer;
     private InputAction meleeAction;
@@ -84,6 +85,7 @@ public class MeleeAttack : MonoBehaviour
         Enemy target = targeting.Current;
         cooldownTimer = cooldown;
         if (target == null) return;
+        SoundManager.Instance.Play(Sfx.Swing);
 
         Vector2 forward = target.transform.position - transform.position;
         slashEffect.Play(forward);
@@ -100,7 +102,13 @@ public class MeleeAttack : MonoBehaviour
             float multiplier = ElementChart.GetMultiplier(playerAttack.CurrentElement, targets[i].Element);
             int finalDamage = Mathf.Max(1, Mathf.RoundToInt(playerAttack.CurrentDamage * multiplier));
             health.TakeDamage(finalDamage);
+
+            if(hitEffectPrefab != null)
+            {
+                Instantiate(hitEffectPrefab, targets[i].transform.position, Quaternion.identity);
+            }
         }
+        if(targets.Count>0) SoundManager.Instance.Play(Sfx.Hit);
         Debug.Log($"검공격 :{targets.Count}마리");
     }
 }

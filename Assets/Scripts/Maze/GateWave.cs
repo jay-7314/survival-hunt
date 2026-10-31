@@ -13,6 +13,7 @@ public class GateWave : MonoBehaviour
 
     private bool started;
     private int waveTotal;
+    public static event System.Action Cleared;
 
     private readonly List<Enemy> waveEnemies = new List<Enemy>();
 
@@ -35,7 +36,7 @@ public class GateWave : MonoBehaviour
     private void UpdateText()
     {
         if (remainText == null) return;
-        remainText.text = $"Enemiies {waveEnemies.Count}/{waveTotal}";
+        remainText.text = $"Enemies {waveEnemies.Count}/{waveTotal}";
     }
 
     public void StartWave()
@@ -73,6 +74,7 @@ public class GateWave : MonoBehaviour
             gate.Open();
             if (remainText != null) remainText.gameObject.SetActive(false);
             Debug.Log("문이 열렸다.");
+            Cleared?.Invoke();
         }
         
     }

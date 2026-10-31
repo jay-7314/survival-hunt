@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -11,6 +12,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private int expReward = 1;
     [SerializeField] private Element element;
+    [SerializeField] private GameObject deathEffectPrefab;
 
     public Element Element => element;
 
@@ -18,6 +20,11 @@ public class Enemy : MonoBehaviour
 
     public void OnKilled()
     {
+        if(deathEffectPrefab != null)
+        {
+            Instantiate(deathEffectPrefab, transform.position, quaternion.identity);
+            SoundManager.Instance.Play(Sfx.Enemy_Die);
+        }
         Killed?.Invoke(this);
         Despawn();
     }

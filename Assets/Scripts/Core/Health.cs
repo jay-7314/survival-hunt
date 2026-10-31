@@ -6,8 +6,12 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 3;
+    [SerializeField] private float invincibleTime = 0f;
+    private float lastHitTime = -999f;
+    public event Action Damaged;
     public event Action Died;
     public event Action<int, int> Changed;
+
 
     private int currentHealth;
     private int bonusMaxHealth;
@@ -18,6 +22,7 @@ public class Health : MonoBehaviour
     private void OnEnable()
     {
         currentHealth = maxHealth+bonusMaxHealth;
+        lastHitTime = -000f;
         NotifyChanged();
     }
     
@@ -29,10 +34,13 @@ public class Health : MonoBehaviour
     public void TakeDamage(int amount)
     {
         if (currentHealth <= 0) return;
+        if (Time.time - lastHitTime < invincibleTime) return;
 
+        lastHitTime = Time.time;
         currentHealth -= amount;
         Debug.Log($"{name} 체력 {currentHealth}");
         NotifyChanged();
+        Damaged?.Invoke();
         if(currentHealth <= 0)
         {
             Die();

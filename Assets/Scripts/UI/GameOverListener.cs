@@ -31,6 +31,7 @@ public class GameOverListener : MonoBehaviour
     {
         isGameOver = true;
         Time.timeScale = 0f;                    //게임속 속도
+        SoundManager.Instance.Play(Sfx.GameOver);
         gameOverPanel.SetActive(true);
     }
 

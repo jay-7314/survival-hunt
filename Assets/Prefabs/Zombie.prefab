@@ -164,6 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   expReward: 1
   element: 3
+  deathEffectPrefab: {fileID: 40737569474099404, guid: 34fb0c1bbe4b1c34288b08fda979442e, type: 3}
 --- !u!58 &2286642651373927580
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -240,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 3
+  invincibleTime: 0
 --- !u!114 &-5580798272805053119
 MonoBehaviour:
   m_ObjectHideFlags: 0

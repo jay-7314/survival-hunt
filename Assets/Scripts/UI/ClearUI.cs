@@ -17,6 +17,7 @@ public class ClearUI : MonoBehaviour
 
     public void Show(float elapsed)
     {
+        SoundManager.Instance.Play(Sfx.Clear);
         timeText.text = FormatTime(elapsed);
 
         if (GameSession.isDaily)
