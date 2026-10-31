@@ -4276,7 +4276,7 @@ MonoBehaviour:
   selectPanel: {fileID: 1323209061}
   dailyPanel: {fileID: 1171509069}
   fader: {fileID: 8573025233099430367}
-  gameSceneIndex: 1
+  gameSceneIndex: 2
   dailyCharacters:
   - {fileID: 11400000, guid: bb6337a7a52597841852562f65808cd3, type: 2}
   - {fileID: 11400000, guid: a6db38bfd2d0ec14eb52b0eb94792cc1, type: 2}

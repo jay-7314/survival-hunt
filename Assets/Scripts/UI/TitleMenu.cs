@@ -9,7 +9,7 @@ public class TitleMenu : MonoBehaviour
     [SerializeField] private GameObject selectPanel;
     [SerializeField] private GameObject dailyPanel;
     [SerializeField] private Fader fader;
-    [SerializeField] private int gameSceneIndex = 1;
+    [SerializeField] private int gameSceneIndex = 2;
     [SerializeField] private CharacterData[] dailyCharacters;
     [SerializeField] private TextMeshProUGUI dailyBestText;
 

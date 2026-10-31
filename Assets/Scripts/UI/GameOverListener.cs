@@ -44,6 +44,6 @@ public class GameOverListener : MonoBehaviour
     public void GoTitle()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

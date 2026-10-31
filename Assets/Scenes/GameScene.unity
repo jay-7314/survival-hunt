@@ -5390,8 +5390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee8699e2dc61944493f3046791f4b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MazeGenerator
-  cellsWide: 15
-  cellsHigh: 15
+  cellsWide: 8
+  cellsHigh: 8
   corridorWidth: 2
   floorTilemap: {fileID: 101818566}
   wallTilemap: {fileID: 1728792518}
@@ -5401,7 +5401,7 @@ MonoBehaviour:
   goal: {fileID: 1413776686}
   cameraFollow: {fileID: 519420033}
   flowField: {fileID: 869215304}
-  roomCount: 7
+  roomCount: 2
   roomsize: 3
   arenaSize: 4
   seed: 0
