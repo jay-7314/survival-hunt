@@ -12,12 +12,20 @@ public class TitleMenu : MonoBehaviour
     [SerializeField] private int gameSceneIndex = 2;
     [SerializeField] private CharacterData[] dailyCharacters;
     [SerializeField] private TextMeshProUGUI dailyBestText;
+    [SerializeField] private GameObject quitButton;
 
     public void OnStartClicked()
     {
         GameSession.isDaily = false;
         StartCoroutine(ShowPanel(selectPanel));
+    }
 
+    private void Start()
+    {
+        if (Application.isMobilePlatform)
+        {
+            quitButton.SetActive(false);        
+        }
     }
 
     public void OnDailyClicked()

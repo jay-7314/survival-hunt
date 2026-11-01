@@ -12,6 +12,7 @@ public class SplashPlayer : MonoBehaviour
 
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         videoPlayer = GetComponent<VideoPlayer>();
         videoPlayer.loopPointReached += OnVideoEnd;
     }
