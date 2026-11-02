@@ -4811,6 +4811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverListener
   playerHealth: {fileID: 1144359919}
+  gameOverPanel: {fileID: 0}
 --- !u!4 &287306211
 Transform:
   m_ObjectHideFlags: 0
@@ -9940,7 +9941,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClearUI
   clearPanel: {fileID: 1065862181}
-  timeTexe: {fileID: 947922733}
+  timeText: {fileID: 0}
+  bestText: {fileID: 0}
 --- !u!4 &966676825
 Transform:
   m_ObjectHideFlags: 0
@@ -10684,8 +10686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1639168c2ec5dd94a8621ff6d6253628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimation
-  anim: {fileID: 1144359913}
-  spriteRenderer: {fileID: 1144359911}
 --- !u!114 &1144359915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10794,6 +10794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 10
+  invincibleTime: 0
 --- !u!114 &1144359920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10830,6 +10831,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   swingButton: {fileID: 1201088238}
+  hitEffectPrefab: {fileID: 0}
 --- !u!58 &1144359922
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -12463,6 +12465,7 @@ MonoBehaviour:
   playerMove: {fileID: 1144359910}
   playerAttack: {fileID: 1144359916}
   playerHealth: {fileID: 1144359919}
+  playerAnimator: {fileID: 1144359913}
 --- !u!4 &1639398780
 Transform:
   m_ObjectHideFlags: 0

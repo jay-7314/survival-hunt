@@ -19,9 +19,14 @@ public class MinimapGoalArrow : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (player == null || goal == null) return;
+        Transform target = goal;
+        if (KeyManager.instance != null && KeyManager.instance.CurrentTarget != null)
+        {
+            target = KeyManager.instance.CurrentTarget;
+        }
+        if (player == null || target == null) return;
 
-        Vector2 toGoal = goal.position - player.position;
+        Vector2 toGoal = target.position - player.position;
         bool farAway = toGoal.magnitude > hideDistance;
         arrowImage.enabled = farAway;
         if (!farAway) return;

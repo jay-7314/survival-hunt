@@ -25,6 +25,9 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private TileBase gateTile;
     [SerializeField] private EnemySpawner[] wavespawners;
     [SerializeField] private TextMeshProUGUI waveText;
+    [SerializeField] private KeyPickup keyPrefab;
+    [SerializeField] private KeyManager keyManager;
+    [SerializeField] private int keyCount;
 
     private List<List<Vector3Int>> arenaGates = new List<List<Vector3Int>>();       //광장마다 입구 칸들 확인
     private List<RectInt> arenas = new List<RectInt>();
@@ -36,7 +39,7 @@ public class MazeGenerator : MonoBehaviour
     private void Awake()
     {
         int usedSeed = seed;
-        if(GameSession.isDaily) usedSeed = GameSession.dailySeed;
+        if (GameSession.isDaily) usedSeed = GameSession.dailySeed;
         if (usedSeed == 0) usedSeed = Random.Range(1, 1000000);
         Random.InitState(usedSeed);
         Debug.Log($"미로 시드{usedSeed}");
@@ -115,6 +118,15 @@ public class MazeGenerator : MonoBehaviour
 
         startPoint.position = CellToWorld(startCell);
         goal.position = CellToWorld(goalCell);
+        List<Vector2Int> keyCells = PickKeyCells(startCell, goalCell, keyCount);
+        List<KeyPickup> keys = new List<KeyPickup>();
+        for(int i = 0; i<keyCells.Count; i++)
+        {
+            KeyPickup key = Instantiate(keyPrefab, CellToWorld(keyCells[i]), Quaternion.identity);
+            keys.Add(key);
+            Debug.Log($"열쇠 {i + 1}: 칸 {keyCells[i]}");
+        }
+        keyManager.SetKeys(keys);
         Debug.Log($"a->b 길 {pathCells.Count}칸");
 
         arenaGates.Clear();
@@ -172,22 +184,22 @@ public class MazeGenerator : MonoBehaviour
     {
         int placed = 0;
         int tries = 0;
-        while(placed <roomCount && tries <roomCount * 20)       //목표개수가 찰때까지 다시 뽑지만 무한반복 되지 않게 하기
+        while (placed < roomCount && tries < roomCount * 20)       //목표개수가 찰때까지 다시 뽑지만 무한반복 되지 않게 하기
         {
             tries++;
             int x = Random.Range(0, cellsWide - roomsize + 1);
             int y = Random.Range(0, cellsHigh - roomsize + 1);
             if (x < 2 && y < 2) continue;
-            if(TryCarveArena(new Vector2Int(x,y), roomsize)) placed++;
+            if (TryCarveArena(new Vector2Int(x, y), roomsize)) placed++;
         }
-       
+
         Debug.Log($"랜덤광장 {placed}개 생성 (목표 {roomCount}번, 시도 {tries})번");
     }
 
     private bool TryCarveArena(Vector2Int bottomLeft, int size)     //겹치면 실패, 아니면 팔고 목록에 넣음
     {
         RectInt rect = new RectInt(bottomLeft, new Vector2Int(size, size));
-        for(int i =0; i<arenas.Count; i++)
+        for (int i = 0; i < arenas.Count; i++)
         {
             if (arenas[i].Overlaps(rect)) return false;
         }
@@ -199,7 +211,7 @@ public class MazeGenerator : MonoBehaviour
 
     private bool PathTouchesArena(RectInt arena)
     {
-        for(int i = 0; i<pathCells.Count; i++)
+        for (int i = 0; i < pathCells.Count; i++)
         {
             if (arena.Contains(pathCells[i])) return true;
         }
@@ -208,7 +220,7 @@ public class MazeGenerator : MonoBehaviour
 
     private bool PathTouchesAnyArena()
     {
-        for(int i = 0; i<arenas.Count; i++)
+        for (int i = 0; i < arenas.Count; i++)
         {
             if (PathTouchesArena(arenas[i])) return true;
         }
@@ -217,17 +229,17 @@ public class MazeGenerator : MonoBehaviour
 
     private bool IsInAnyArena(Vector2Int cell)
     {
-        for(int i = 0; i<arenas.Count; i++)
+        for (int i = 0; i < arenas.Count; i++)
         {
             if (arenas[i].Contains(cell)) return true;
         }
         return false;
     }
-    private void AddGapCells(List<Vector3Int> list, Vector2Int from, Vector2Int dir)        
+    private void AddGapCells(List<Vector3Int> list, Vector2Int from, Vector2Int dir)
     {
         Vector2Int tile = CellToTile(from);
 
-        for(int i = 0; i< corridorWidth; i++)
+        for (int i = 0; i < corridorWidth; i++)
         {
             Vector2Int t = tile;
             if (dir.x == 1) t = new Vector2Int(tile.x + corridorWidth, tile.y + i);
@@ -242,19 +254,19 @@ public class MazeGenerator : MonoBehaviour
     private List<Vector3Int> FindArenaGateCells(RectInt arena)
     {
         List<Vector3Int> result = new List<Vector3Int>();
-        for(int x = arena.xMin; x< arena.xMax; x++)
+        for (int x = arena.xMin; x < arena.xMax; x++)
         {
-            for(int y = arena.yMin; y<arena.yMax; y++)
+            for (int y = arena.yMin; y < arena.yMax; y++)
             {
                 Vector2Int cell = new Vector2Int(x, y);
-                for(int i = 0; i<directions.Length; i++)
+                for (int i = 0; i < directions.Length; i++)
                 {
-                    Vector2Int next = cell +directions[i];
+                    Vector2Int next = cell + directions[i];
 
-                    if(next.x <0 || next.x >=cellsWide) continue;
+                    if (next.x < 0 || next.x >= cellsWide) continue;
                     if (next.y < 0 || next.y >= cellsHigh) continue;
                     if (arena.Contains(next)) continue;
-                    if(!IsOpenBetween(cell, next)) continue;
+                    if (!IsOpenBetween(cell, next)) continue;
 
                     AddGapCells(result, cell, directions[i]);
                 }
@@ -265,7 +277,7 @@ public class MazeGenerator : MonoBehaviour
 
     private void CreateArenaWaves()
     {
-        for(int i = 0; i<arenas.Count; i++)
+        for (int i = 0; i < arenas.Count; i++)
         {
             GameObject obj = Instantiate(arenaWavePrefab);      //프리팹을 복사해서 씬에 만듦.
             obj.name = $"ArenaWave_{i}";
@@ -410,6 +422,79 @@ public class MazeGenerator : MonoBehaviour
         return farthest;
     }
 
+    private int[,] GetDistance(Vector2Int start)
+    {
+        int[,] distance = new int[cellsWide, cellsHigh];
+        for (int x = 0; x < cellsWide; x++)
+        {
+            for (int y = 0; y < cellsHigh; y++)
+            {
+                distance[x, y] = -1;
+            }
+        }
+        Queue<Vector2Int> queue = new Queue<Vector2Int>();
+        distance[start.x, start.y] = 0;
+        queue.Enqueue(start);
+
+        while (queue.Count > 0)
+        {
+            Vector2Int current = queue.Dequeue();
+            for (int i = 0; i < directions.Length; i++)
+            {
+                Vector2Int next = current + directions[i];
+                if (next.x < 0 || next.x >= cellsWide) continue;
+                if (next.y < 0 || next.y >= cellsHigh) continue;
+                if (distance[next.x, next.y] != -1) continue;
+                if (!IsOpenBetween(current, next)) continue;
+
+                distance[next.x, next.y] = distance[current.x, current.y] + 1;
+                queue.Enqueue(next);
+            }
+        }
+        return distance;
+    }
+
+    private List<Vector2Int> PickKeyCells(Vector2Int startCell, Vector2Int goalCell, int count)
+    {
+        int[,] fromStart = GetDistance(startCell);
+        List<int[,]> maps = new List<int[,]> { fromStart, GetDistance(goalCell) };
+        List<Vector2Int> picked = new List<Vector2Int>();
+
+        for (int n = 0; n < count; n++)
+        {
+            Vector2Int best = startCell;
+            int bestScore = -1;
+
+            for (int x = 0; x < cellsWide; x++)
+            {
+                for (int y = 0; y < cellsHigh; y++)
+                {
+                    Vector2Int cell = new Vector2Int(x, y);
+                    if (IsInAnyArena(cell) || picked.Contains(cell)) continue;
+
+                    int score = int.MaxValue;
+                    for (int m = 0; m < maps.Count; m++)
+                    {
+                        score = Mathf.Min(score, maps[m][x, y]);
+                    }
+                    if (score > bestScore)
+                    {
+                        bestScore = score;
+                        best = cell;
+                    }
+                }
+            }                                       // x, y 반복문은 여기서 끝
+
+            if (bestScore <= 0) break;              // 반복문 "밖"에서 한 번만 판단
+            picked.Add(best);
+            maps.Add(GetDistance(best));
+        }
+
+        picked.Sort((a, b) => fromStart[a.x, a.y].CompareTo(fromStart[b.x, b.y]));
+        return picked;
+    }
+
+
     private List<Vector2Int> FindPath(Vector2Int start, Vector2Int goalCell)
     {
         Vector2Int[,] cameFrom = new Vector2Int[cellsWide, cellsHigh];      //어느 칸에서 왔는지 적어둠
@@ -424,13 +509,13 @@ public class MazeGenerator : MonoBehaviour
             Vector2Int current = queue.Dequeue();
             if (current == goalCell) break;
 
-            for(int i = 0; i<directions.Length; i++)
+            for (int i = 0; i < directions.Length; i++)
             {
                 Vector2Int next = current + directions[i];
-                if (next.x <0 || next.x >= cellsWide) continue;
-                if(next.y <0 || next.y>= cellsHigh) continue;
+                if (next.x < 0 || next.x >= cellsWide) continue;
+                if (next.y < 0 || next.y >= cellsHigh) continue;
                 if (seen[next.x, next.y]) continue;
-                if(!IsOpenBetween(current, next)) continue;
+                if (!IsOpenBetween(current, next)) continue;
 
                 seen[next.x, next.y] = true;
                 cameFrom[next.x, next.y] = current;
@@ -439,7 +524,7 @@ public class MazeGenerator : MonoBehaviour
         }
         List<Vector2Int> result = new List<Vector2Int>();
         Vector2Int step = goalCell;
-        while(step != start)
+        while (step != start)
         {
             result.Add(step);
             step = cameFrom[step.x, step.y];
@@ -464,11 +549,11 @@ public class MazeGenerator : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
-        for(int i = 0; i<pathCells.Count; i++)
+        for (int i = 0; i < pathCells.Count; i++)
         {
             Gizmos.DrawSphere(CellToWorld(pathCells[i]), 0.5f);
         }
-        for(int i =0; i<arenas.Count; i++)
+        for (int i = 0; i < arenas.Count; i++)
         {
             RectInt r = arenas[i];
             Vector3 a = CellToWorld(r.position);
@@ -477,13 +562,13 @@ public class MazeGenerator : MonoBehaviour
             float tilesW = r.width * Stride - 1;
             float tilesH = r.height * Stride - 1;
 
-            Gizmos.color =PathTouchesArena(r) ? Color.magenta : Color.yellow;
+            Gizmos.color = PathTouchesArena(r) ? Color.magenta : Color.yellow;
             Gizmos.DrawWireCube((a + b) / 2f, new Vector3(tilesW, tilesH, 0));
         }
         Gizmos.color = Color.blue;
-        for(int i = 0; i<arenaGates.Count; i++)
+        for (int i = 0; i < arenaGates.Count; i++)
         {
-            for(int j = 0; j < arenaGates[i].Count; j++)
+            for (int j = 0; j < arenaGates[i].Count; j++)
             {
                 Gizmos.DrawCube(floorTilemap.GetCellCenterWorld(arenaGates[i][j]), Vector3.one * 0.8f);
             }

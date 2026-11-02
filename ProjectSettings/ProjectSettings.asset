@@ -271,7 +271,7 @@ PlayerSettings:
   AndroidAllowedArchitectures: -13
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Github/Keystore/user.keystore
+  AndroidKeystoreName: C:/Users/HULIAC/Desktop/Github/user.keystore
   AndroidKeyaliasName: survivalhunt
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidEnableArm64MTE: 0
