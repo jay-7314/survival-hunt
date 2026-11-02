@@ -130,26 +130,18 @@ public class CardManager : MonoBehaviour
         {
             if (slots[i].IsEmpty) continue;
 
-            float amount = slots[i].card.Value * slots[i].level;
+            CardData card = slots[i].card;
+            int level = slots[i].level;
 
-            switch (slots[i].card.Effect)
+            AddEffect(card.Effect, card.Value * level);           //기본 효과 1개
+
+            if (card.ExtraEffects != null)                        //추가 효과가 있으면
             {
-                case CardEffect.Damage:
-                    DamageBonus += amount;
-                    break;
-                case CardEffect.MoveSpeed:
-                    MoveSpeedBonus += amount;
-                    break;
-                case CardEffect.MaxHealth:
-                    MaxHealthBonus += amount;
-                    break;
-                case CardEffect.Range:
-                    RangeBonus += amount;
-                    break;
-                case CardEffect.AttackSpeed:
-                    AttackSpeedBonus += amount;
-                    break;
-
+                for (int j = 0; j < card.ExtraEffects.Length; j++)
+                {
+                    CardEffectEntry entry = card.ExtraEffects[j];
+                    AddEffect(entry.effect, entry.value * level);
+                }
             }
         }
         CountElements();
@@ -168,6 +160,28 @@ public class CardManager : MonoBehaviour
         playerAttack.SetAttackElement(GetDominantElement());
 
         SlotsChanged?.Invoke();
+    }
+
+    private void AddEffect(CardEffect effect, float amount)
+    {
+        switch (effect)
+        {
+            case CardEffect.Damage:
+                DamageBonus += amount;
+                break;
+            case CardEffect.MoveSpeed:
+                MoveSpeedBonus += amount;
+                break;
+            case CardEffect.MaxHealth:
+                MaxHealthBonus += amount;
+                break;
+            case CardEffect.Range:
+                RangeBonus += amount;
+                break;
+            case CardEffect.AttackSpeed:
+                AttackSpeedBonus += amount;
+                break;
+        }
     }
 
     private int GetSynergyTier(Element element)

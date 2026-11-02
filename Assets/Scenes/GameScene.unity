@@ -4508,7 +4508,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 798347253}
-  m_Father: {fileID: 1040444250}
+  m_Father: {fileID: 801034824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5185,6 +5185,12 @@ MonoBehaviour:
   - {fileID: 2128055930}
   - {fileID: 1913958465}
   - {fileID: 1695770975}
+  slotImages:
+  - {fileID: 266348053}
+  - {fileID: 1909417543}
+  - {fileID: 2125322645}
+  - {fileID: 1627128463}
+  emptyColor: {r: 1, g: 1, b: 1, a: 0.3}
 --- !u!1 &266348051
 GameObject:
   m_ObjectHideFlags: 0
@@ -10535,6 +10541,7 @@ RectTransform:
   m_Children:
   - {fileID: 386301167}
   - {fileID: 1040444250}
+  - {fileID: 195329094}
   - {fileID: 83289308}
   - {fileID: 814620662}
   m_Father: {fileID: 525642077}
@@ -11196,7 +11203,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 69698790}
-  - {fileID: 195329094}
   m_Father: {fileID: 801034824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -17197,6 +17203,10 @@ MonoBehaviour:
   - {fileID: 1072199940}
   - {fileID: 69698791}
   - {fileID: 798347254}
+  cardImages:
+  - {fileID: 386301169}
+  - {fileID: 1040444252}
+  - {fileID: 195329096}
   cardManager: {fileID: 774508385}
   replacePrompt: {fileID: 83289307}
   playerHealth: {fileID: 1144359919}

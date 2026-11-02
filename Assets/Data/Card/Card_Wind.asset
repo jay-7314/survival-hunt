@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b19c51b537c764489db7fbe29be0c2, type: 3}
   m_Name: Card_Wind
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  extraEffects:
+  - effect: 4
+    value: 0.1
   cardName: "\uC9C8\uD48D"
-  description: 
+  description: "\uC774\uB3D9\uC18D\uB3C4 +0.4, \uACF5\uACA9\uC18D\uB3C4 +0.1"
   element: 4
-  effect: 4
-  value: 0.3
+  effect: 1
+  value: 0.4

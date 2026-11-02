@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelUpListener : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class LevelUpListener : MonoBehaviour
     [SerializeField] private CardPicker cardPicker;
     [SerializeField] private GameObject cardPanel;
     [SerializeField] private TextMeshProUGUI[] cardTexts;
+    [SerializeField] private Image[] cardImages;
     [SerializeField] private CardManager cardManager;
     [SerializeField] private GameObject replacePrompt;
     [SerializeField] private Health playerHealth;
@@ -34,6 +36,7 @@ public class LevelUpListener : MonoBehaviour
         for(int i = 0; i< currentCards.Count && i< currentCards.Count; i++)        //글자칸이나 카드수보다 많이 접근해서 에러가 나지 않게 하기
         {
             cardTexts[i].text = $"{currentCards[i].CardName}\n{currentCards[i].Description}";
+            cardImages[i].color = ElementColors.Get(currentCards[i].CardElement);
         }
         SoundManager.Instance.Play(Sfx.LevelUp);
         cardPanel.SetActive(true);

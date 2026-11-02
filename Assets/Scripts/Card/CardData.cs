@@ -1,9 +1,19 @@
 
+using JetBrains.Annotations;
+using System;
 using UnityEngine;
 
+
+[Serializable]
+public class CardEffectEntry
+{
+    public CardEffect effect;
+    public float value;
+}
 [CreateAssetMenu(fileName ="NewCard",menuName = "Survival Hunt/Card Data")]
 public class CardData :ScriptableObject     //에셋 파일이 됨
 {
+    [SerializeField] private CardEffectEntry[] extraEffects; 
     [SerializeField] private string cardName;
     [SerializeField, TextArea] private string description;      //설명 문장용
     [SerializeField] private Element element;
@@ -15,4 +25,5 @@ public class CardData :ScriptableObject     //에셋 파일이 됨
     public Element CardElement => element;
     public CardEffect Effect => effect;
     public float Value => value;    
+    public CardEffectEntry[] ExtraEffects => extraEffects;
 }

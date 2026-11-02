@@ -29,7 +29,7 @@ public class CharacterLoader : MonoBehaviour
         }
 
         //고른 캐릭터를 검사
-        if(character.StartingCard != null)
+        if (chosen.StartingCard != null)
         {
             cardManager.TrySelect(chosen.StartingCard);
         }
