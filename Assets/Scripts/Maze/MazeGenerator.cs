@@ -40,6 +40,14 @@ public class MazeGenerator : MonoBehaviour
     {
         int usedSeed = seed;
         if (GameSession.isDaily) usedSeed = GameSession.dailySeed;
+        if (GameSession.isTutorial)
+        {
+            cellsWide = 3;
+            cellsHigh = 3;
+            roomCount = 0;
+            keyCount = 1;
+            usedSeed = 777;
+        }
         if (usedSeed == 0) usedSeed = Random.Range(1, 1000000);
         Random.InitState(usedSeed);
         Debug.Log($"미로 시드{usedSeed}");
@@ -109,7 +117,7 @@ public class MazeGenerator : MonoBehaviour
         Vector2Int goalCell = FindFarthestCell(startCell);  // 광장을 다 판 뒤에 깃발을 정함
         pathCells = FindPath(startCell, goalCell);
 
-        if (!PathTouchesAnyArena())                         // 길이 광장을 하나도 안 지나가면
+        if (!GameSession.isTutorial && !PathTouchesAnyArena())                         // 길이 광장을 하나도 안 지나가면
         {
             CarveArenaOnPath();                             // 길 중간에 광장을 하나 더 파고
             goalCell = FindFarthestCell(startCell);         // 깃발과 길을 다시 구함

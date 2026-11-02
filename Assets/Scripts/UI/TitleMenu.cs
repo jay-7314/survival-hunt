@@ -17,6 +17,7 @@ public class TitleMenu : MonoBehaviour
     public void OnStartClicked()
     {
         GameSession.isDaily = false;
+        GameSession.isTutorial = true;
         StartCoroutine(ShowPanel(selectPanel));
     }
 
@@ -31,13 +32,14 @@ public class TitleMenu : MonoBehaviour
     public void OnDailyClicked()
     {
         GameSession.isDaily = true;
+        GameSession.isTutorial = false;
         int seed = GameSession.TodaySeed();
         GameSession.dailySeed = seed;
         GameSession.selectedCharacter = dailyCharacters[seed % dailyCharacters.Length];
 
         float best = DailyRecord.GetBest(seed);
-        if (best < 0) dailyBestText.text = "¿À´ÃÀÇ ±â·Ï ¾øÀ½";
-        else dailyBestText.text = $"¿À´ÃÀÇ ÃÖ°í±â·Ï {DailyRecord.FormatTime(best)}";
+        if (best < 0) dailyBestText.text = "ì˜¤ëŠ˜ì˜ ê¸°ë¡ ì—†ìŒ";
+        else dailyBestText.text = $"ì˜¤ëŠ˜ì˜ ìµœê³ ê¸°ë¡ {DailyRecord.FormatTime(best)}";
         StartCoroutine(ShowPanel(dailyPanel));
     }
 

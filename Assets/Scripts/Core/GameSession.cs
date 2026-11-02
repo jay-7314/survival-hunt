@@ -6,6 +6,7 @@ public static class GameSession
 
     public static bool isDaily;
     public static int dailySeed;
+    public static bool isTutorial;
 
     public static int TodaySeed()
     {
