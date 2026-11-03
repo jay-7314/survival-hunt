@@ -21,3 +21,4 @@ MonoBehaviour:
   attackCooldown: 0.5
   startingCard: {fileID: 11400000, guid: bd5e5febfd2c297428ada29c36575f61, type: 2}
   animatorController: {fileID: 22100000, guid: a76fca7d1fdac864f81e57abcee04da4, type: 2}
+  unlockCost: 150

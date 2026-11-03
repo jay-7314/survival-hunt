@@ -11,6 +11,7 @@ public class CharacterData : ScriptableObject
     [SerializeField] private float attackCooldown = 0.5f;
     [SerializeField] private CardData startingCard;
     [SerializeField] private RuntimeAnimatorController animatorController;
+    [SerializeField] private int unlockCost = 0;
 
     public RuntimeAnimatorController AnimatorController => animatorController;
     public string CharacterName => characterName;
@@ -20,4 +21,5 @@ public class CharacterData : ScriptableObject
     public int MaxHealth => maxHealth;
     public float AttackCooldown => attackCooldown;
     public CardData StartingCard => startingCard;
+    public int UnlockCost => unlockCost;
 }

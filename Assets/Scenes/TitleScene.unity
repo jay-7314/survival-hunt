@@ -375,7 +375,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2953,12 +2953,18 @@ MonoBehaviour:
   characters:
   - {fileID: 11400000, guid: bb6337a7a52597841852562f65808cd3, type: 2}
   - {fileID: 11400000, guid: a6db38bfd2d0ec14eb52b0eb94792cc1, type: 2}
+  - {fileID: 11400000, guid: 14449839ec358f04b80b61d46ccd2a88, type: 2}
+  - {fileID: 11400000, guid: c4540fa8a932b5d4d8ecc1d2a8a2a9c0, type: 2}
   cardOutlines:
   - {fileID: 1042656872}
   - {fileID: 1332570872}
+  - {fileID: 102987281}
+  - {fileID: 1510495704}
   cardAnimators:
   - {fileID: 835865092}
   - {fileID: 325755175}
+  - {fileID: 1230701629}
+  - {fileID: 316375792}
   infoText: {fileID: 289160975}
 --- !u!1 &1332570870
 GameObject:
@@ -3458,7 +3464,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5355,7 +5361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8108340186457141944, guid: 9c0d7ed8556d0ea479601e91f9ddf16e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
