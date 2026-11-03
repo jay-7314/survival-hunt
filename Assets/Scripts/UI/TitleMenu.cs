@@ -19,6 +19,7 @@ public class TitleMenu : MonoBehaviour
         GameSession.isDaily = false;
         GameSession.isTutorial = true;
         StartCoroutine(ShowPanel(selectPanel));
+        GameSession.ResetRun();
     }
 
     private void Start()
@@ -41,6 +42,7 @@ public class TitleMenu : MonoBehaviour
         if (best < 0) dailyBestText.text = "오늘의 기록 없음";
         else dailyBestText.text = $"오늘의 최고기록 {DailyRecord.FormatTime(best)}";
         StartCoroutine(ShowPanel(dailyPanel));
+        GameSession.ResetRun();
     }
 
     public void OnBackClicked()

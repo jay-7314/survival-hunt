@@ -29,6 +29,8 @@ public class EnemySpawner : MonoBehaviour
                 Enemy zombie = Instantiate(zombiePrefab);
                 zombie.GetComponent<EnemyChase>().SetTarget(player);
                 zombie.GetComponent<EnemyChase>().SetFlowField(flowField);
+                zombie.GetComponent<EnemyChase>().SetspeedMultiplier(Difficulty.SpeedMultiplier);
+                zombie.GetComponent<Health>().ScaleMaxHealth(Difficulty.HealthMultiplier);
                 zombie.SetPool(pool);
                 return zombie;
             },
@@ -46,7 +48,8 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         elapsed += Time.deltaTime;
-        float currentInterval = Mathf.Max(minSpawnInterval, spawnInterval - elapsed * intervalDecreasePerSecond);
+        float baseInterval = Mathf.Max(minSpawnInterval, spawnInterval - elapsed * intervalDecreasePerSecond);
+        float currentInterval = Mathf.Max(0.3f, baseInterval * Difficulty.SpawnIntervalMultiplier);
 
         timer += Time.deltaTime;
         if(timer>= currentInterval)

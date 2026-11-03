@@ -28,6 +28,7 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private KeyPickup keyPrefab;
     [SerializeField] private KeyManager keyManager;
     [SerializeField] private int keyCount;
+    [SerializeField] private int debugStage = 0;
 
     private List<List<Vector3Int>> arenaGates = new List<List<Vector3Int>>();       //광장마다 입구 칸들 확인
     private List<RectInt> arenas = new List<RectInt>();
@@ -47,6 +48,16 @@ public class MazeGenerator : MonoBehaviour
             roomCount = 0;
             keyCount = 1;
             usedSeed = 777;
+        }
+        if(!GameSession.isDaily && !GameSession.isTutorial)
+{
+            if (debugStage > 0) GameSession.stage = debugStage;      //테스트용으로 판 번호를 덮어씀
+            int stage = GameSession.stage;
+            int extra = stage - 1;
+
+            cellsWide = Mathf.Min(cellsWide + extra * 2, 15);
+            cellsHigh = Mathf.Min(cellsHigh + extra * 2, 15);
+            roomCount += extra;
         }
         if (usedSeed == 0) usedSeed = Random.Range(1, 1000000);
         Random.InitState(usedSeed);

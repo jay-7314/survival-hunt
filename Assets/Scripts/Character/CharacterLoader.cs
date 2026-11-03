@@ -13,7 +13,7 @@ public class CharacterLoader : MonoBehaviour
     {
         CharacterData chosen = character;
 
-        if(GameSession.selectedCharacter != null)
+        if (GameSession.selectedCharacter != null)
         {
             chosen = GameSession.selectedCharacter;
         }
@@ -21,15 +21,20 @@ public class CharacterLoader : MonoBehaviour
 
         playerMove.ApplyCharacter(chosen);
         playerAttack.ApplyCharacter(chosen);
-        playerHealth .ApplyCharacter(chosen);
+        playerHealth.ApplyCharacter(chosen);
 
-        if(chosen.AnimatorController != null)
+        if (chosen.AnimatorController != null)
         {
             playerAnimator.runtimeAnimatorController = chosen.AnimatorController;
         }
 
-        //고른 캐릭터를 검사
-        if (chosen.StartingCard != null)
+        if (GameSession.hasCarryOver)
+        {
+            cardManager.LoadFromSession();                      //카드 먼저 복원
+            playerHealth.SetCurrent(GameSession.carryHealth);   //그다음 체력 (순서 중요)
+            GameSession.hasCarryOver = false;                   //한 번 쓰면 비움
+        }
+        else if (chosen.StartingCard != null)
         {
             cardManager.TrySelect(chosen.StartingCard);
         }

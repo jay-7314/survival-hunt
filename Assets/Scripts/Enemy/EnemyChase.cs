@@ -6,6 +6,7 @@ public class EnemyChase : MonoBehaviour
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float stoppingDistance = 0.6f;
     [SerializeField] private float knockbackDecay = 12f;        //1초에 얼마나 줄어드는지
+    private float speedMultiplier = 1f;
     private Vector3 knockbackVelocity;              // 지금 밀려나는 속도
     private Rigidbody2D rb;
     private FlowField flowField;
@@ -48,7 +49,12 @@ public class EnemyChase : MonoBehaviour
             }
         }
 
-        rb.linearVelocity = direction * moveSpeed;
+        rb.linearVelocity = direction * moveSpeed * speedMultiplier;
+    }
+
+    public void SetspeedMultiplier(float multiplier)
+    {
+        speedMultiplier = multiplier;
     }
 
     public void SetFlowField(FlowField field)

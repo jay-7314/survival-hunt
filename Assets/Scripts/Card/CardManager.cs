@@ -200,6 +200,26 @@ public class CardManager : MonoBehaviour
         Recalculate();
     }
 
+    public void SaveToSession()
+    {
+        for(int i = 0; i<slots.Length; i++)
+        {
+            GameSession.carryCards[i] = slots[i].card;
+            GameSession.carryLevels[i] = slots[i].level;
+        }
+    }
+
+    public void LoadFromSession()
+    {
+        for(int i = 0; i<slots.Length; i++)
+        {
+            slots[i].card = GameSession.carryCards[i];
+            slots[i].level = GameSession.carryLevels[i];
+        }
+        Recalculate();
+        Debug.Log("이어받기 : 카드 복원");
+    }
+
     private Element GetDominantElement()
     {
         Element best = Element.None;

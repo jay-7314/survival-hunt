@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -89,6 +87,17 @@ public class Health : MonoBehaviour
 
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth + bonusMaxHealth);
         Debug.Log($"체력 회복 : {currentHealth} / {maxHealth + bonusMaxHealth}");
+        NotifyChanged();
+    }
+
+    public void ScaleMaxHealth(float muluiplier)
+    {
+        int bouns = Mathf.RoundToInt(maxHealth * (muluiplier - 1f));
+        SetMaxHealthBonus(bouns);
+    }
+    public void SetCurrent(int value)
+    {
+        currentHealth = Mathf.Clamp(value, 1, maxHealth + bonusMaxHealth);
         NotifyChanged();
     }
 
