@@ -26,6 +26,7 @@ public class SoundManager : MonoBehaviour
 
     public void Play(Sfx sfx)
     {
+        if (!SoundSetting.SfxOn) return;
         int index = (int)sfx;
         if (index >= sfxClips.Length) return;
         if (sfxClips[index] == null) return;

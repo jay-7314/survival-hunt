@@ -7,6 +7,7 @@ public class PauseUI : MonoBehaviour
 
     public void Pause()
     {
+        if (Time.timeScale == 0f) return;
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
     }

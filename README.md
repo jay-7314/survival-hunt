@@ -8,15 +8,21 @@
 | 엔진 | Unity 6000.3.8f1 (2D URP, C#) |
 | 플랫폼 | Android (가로 화면) |
 | 개발 | 1인 개발: 기획, 프로그래밍, UI, 캐릭터 애니메이션, 스토어 출시 준비 |
-| 상태 | 개발 완료 단계, Google Play 비공개 테스트 준비 중 |
+| 상태 | Google Play 내부 테스트 진행 중 (비공개 테스트 준비) |
 
-<!-- 스크린샷 / GIF 자리: 아래 파일을 docs/images 에 넣고 주석을 풀어 주세요 -->
-<!--
-![플레이 화면](docs/images/gameplay.gif)
-![카드 선택](docs/images/card-select.png)
-![캐릭터 선택](docs/images/character-select.png)
-![클리어 화면](docs/images/clear.png)
--->
+## 스크린샷
+
+| 캐릭터 선택 | 전투 |
+|---|---|
+| <img src="docs/images/Character_Select.png" width="100%"> | <img src="docs/images/Play.png" width="100%"> |
+
+| 카드 선택 | 클리어 / 정산 |
+|---|---|
+| <img src="docs/images/card_select.png" width="100%"> | <img src="docs/images/Clear.png" width="100%"> |
+
+| 튜토리얼 |
+|---|
+| <img src="docs/images/Tutorial.png" width="50%"> |
 
 ## 한눈에 보기
 
@@ -28,6 +34,7 @@
 - **정산 / 계속**: 계속하다 죽으면 정산하지 않은 코인을 잃습니다.
 - **오늘의 게임**: 날짜 기반 시드로 모두에게 같은 미로를 제공합니다.
 - **보상형 광고**: 광고를 보면 정산 코인이 두 배가 됩니다 (Unity LevelPlay).
+- **튜토리얼, 일시정지, 소리 설정**: 처음 하는 사람도 쉽게 시작하고, 배경음과 효과음을 따로 끌 수 있습니다.
 
 ## 기술적으로 다룬 문제
 
@@ -50,23 +57,26 @@
 | 이동 속도 | `1 + 0.08 × (S−1)` |
 | 스폰 간격 | `0.9^(S−1)` (최소 0.3초) |
 
-### 4-1. 오브젝트 풀링과 스케일 중복 적용 방지
+### 5. 오브젝트 풀링과 배율 중복 적용 방지
 적은 풀링으로 재사용합니다. 난이도 배율을 꺼낼 때마다 적용하면 재사용할 때 배율이 누적되므로, 풀의 생성 시점(`createFunc`)에 한 번만 적용하도록 했습니다.
 
-### 5. 판 사이 상태 이어받기 (`GameSession`)
+### 6. 판 사이 상태 이어받기 (`GameSession`)
 씬을 다시 로드해도 체력, 카드, 레벨이 이어지도록 정적 세션 객체에 저장하고 불러옵니다(`SaveToSession` / `LoadFromSession`). 이어받기가 끝나면 플래그를 내려서 다음 판에 잘못 적용되지 않게 합니다.
 
-### 6. 보상 경제 설계
+### 7. 보상 경제 설계
 - 판 클리어 보상: `5 + 2 × (클리어 판 수 − 1)` 코인
 - 정산하지 않고 죽으면 0, 광고 시청 시 정산액 2배
 - 코인 저장은 `PlayerPrefs`, 변경은 이벤트(`CoinWallet.Changed`)로 UI에 전달
 
-### 7. 광고 연동 (Unity LevelPlay)
+### 8. 광고 연동 (Unity LevelPlay)
 - 보상은 광고를 끝까지 봤을 때(`OnAdRewarded`)에만 지급하고, 닫기(`OnAdClosed`)로는 지급하지 않습니다.
 - 정산 중복 지급을 막기 위한 가드를 두었습니다.
-- 개인정보처리방침과 Play Console 광고 선언을 함께 준비했습니다.
+- 광고 선언, 데이터 보안 양식, 개인정보처리방침을 Play Console 기준에 맞춰 작성했습니다.
 
-### 8. 캐릭터 애니메이션 파이프라인
+### 9. 소리 설정 (`SoundSettings`)
+배경음과 효과음 설정을 static 클래스 한 곳에 저장하고(`PlayerPrefs`), 값이 바뀌면 이벤트(`Changed`)로 알려서 씬마다 있는 배경음 오브젝트와 효과음 재생부가 같은 설정을 따르게 했습니다. 일시정지 화면과 타이틀 화면의 토글 버튼은 같은 스크립트를 재사용합니다.
+
+### 10. 캐릭터 애니메이션 파이프라인
 Animator Override Controller로 하나의 컨트롤러를 4명이 공유하고, 캐릭터마다 클립만 교체합니다.
 
 ## 겪은 문제와 해결
@@ -77,16 +87,21 @@ Animator Override Controller로 하나의 컨트롤러를 4명이 공유하고, 
 | 해금 버튼이 열린 캐릭터에서도 보임 | `Select()`에서 버튼 활성화 로직 누락 | `SetActive(!unlocked)` 추가 |
 | 클리어 후에도 몬스터가 플레이어를 공격 | 클리어 연출 중 시간이 계속 흐름 | `timeScale = 0`, 연출 대기는 `WaitForSecondsRealtime` |
 | 카드 효과를 1개씩만 설정 가능 | 단일 필드 구조 | 추가 효과 배열(`extraEffects`) 도입 |
+| 웹 빌드로 바꾸자 에디터에서 광고 버튼이 안 뜸 | LevelPlay는 웹 플랫폼을 지원하지 않음 | 빌드 플랫폼을 Android로 되돌려서 해결 |
+| 레벨업 화면에서 일시정지를 누르면 시간이 다시 흐름 | 이미 `timeScale = 0`인 상태에서 이어하기가 1로 되돌림 | `Pause()` 맨 위에 가드(`if (Time.timeScale == 0f) return;`) 추가 |
+| git push가 100MB 제한으로 거절됨 | 빌드 결과 zip이 커밋에 포함됨 | `git rm --cached`로 추적 해제 후 `.gitignore`에 `*.zip` 추가, 커밋 수정 |
 
 ## 폴더 구조
 
 ```
 Assets/
-  Scripts/    게임 코드 (Card, Core, UI 등)
-  Scenes/     Title / Game 씬
+  Scripts/    게임 코드 (Card, Character, Core, Enemy, Maze, UI 등)
+  Scenes/     SplashScene / TitleScene / GameScene
 Packages/
 ProjectSettings/
-docs/         개인정보처리방침 등
+docs/
+  images/     README 스크린샷
+privacy.html  개인정보처리방침 (GitHub Pages)
 ```
 
 ## 실행 방법
