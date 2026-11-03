@@ -16,3 +16,4 @@
 *.keystore
 .utmp/
 *.zip
+WebGL Builds/
