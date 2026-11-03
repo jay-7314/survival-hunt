@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Unity.Services.LevelPlay;
 
 public class ClearUI : MonoBehaviour
 {
@@ -13,10 +14,14 @@ public class ClearUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rewardText;
     [SerializeField] private GameObject startGameButton;
     [SerializeField] private GameObject settleButton;
+    [SerializeField] private GameObject adSettleButton;
     [SerializeField] private GameObject continueButton;
     [SerializeField] private GameObject restartButton;
     [SerializeField] private GameObject titleButton;
     [SerializeField] private Fader fader;
+
+    private bool adReady;
+    private bool settled;
 
     private string FormatTime(float t)
     {
@@ -61,32 +66,55 @@ public class ClearUI : MonoBehaviour
         titleButton.SetActive(!normal);
         rewardText.gameObject.SetActive(normal);
 
+        settled = false;
+
         if (normal)
         {
             int now = GameSession.RewardFor(GameSession.stage);
             int next = GameSession.RewardFor(GameSession.stage + 1);
             rewardText.text = $"{GameSession.stage}판 클리어!\n지금 정산하면 +{now}코인\n계속하면 다음 판에서 +{next}코인 (죽으면 0)";
+
+            adSettleButton.GetComponentInChildren<TextMeshProUGUI>().text = $"광고 보고 {now * 2}코인 정산";
         }
+        adSettleButton.SetActive(normal && adReady);
 
         clearPanel.SetActive(true);
     }
 
     public void Settle()
     {
-        int reward = GameSession.RewardFor(GameSession.stage);
+        FinishSettle(GameSession.RewardFor(GameSession.stage));
+    }
+
+    private void FinishSettle(int reward)
+    {
+        if (settled) return;                 //두 번 정산되는 것 방지
+        settled = true;
+
         CoinWallet.Add(reward);
         GameSession.ResetRun();
 
         rewardText.text = $"정산 완료! +{reward}코인";
         settleButton.SetActive(false);
         continueButton.SetActive(false);
+        adSettleButton.SetActive(false);
 
         StartCoroutine(GoTitleRoutine());
     }
 
+    public void OnAdLoaded(LevelPlayAdInfo info)
+    {
+        adReady = true;                      //광고가 준비됐음을 기억
+    }
+
+    public void OnAdRewarded(LevelPlayAdInfo info, LevelPlayReward reward)
+    {
+        FinishSettle(GameSession.RewardFor(GameSession.stage) * 2);   //끝까지 봤을 때만 2배
+    }
+
     private IEnumerator GoTitleRoutine()
     {
-        yield return new WaitForSecondsRealtime(1.5f);      //결과 글자를 잠깐 보여 줌
+        yield return new WaitForSecondsRealtime(2.5f);      //결과 글자를 잠깐 보여 줌
         if (fader != null) yield return fader.FadeOut();    //화면을 어둡게
         GoTitle();                                          //타이틀로
     }
@@ -126,4 +154,13 @@ public class ClearUI : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
+
+#if UNITY_EDITOR
+    [ContextMenu("Test Show Clear")]
+    private void TestShow()
+    {
+        Show(12f);
+        Time.timeScale = 0f;
+    }
+#endif
 }

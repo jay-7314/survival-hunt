@@ -26,7 +26,7 @@ public class CharacterSelectUI : MonoBehaviour
         cardBaseColors = new Color[n];
         previewBaseColors = new Color[n];
 
-        for(int i =0; i<n; i++)
+        for (int i = 0; i < n; i++)
         {
             cardImages[i] = cardOutlines[i].GetComponent<Image>();
             previewImages[i] = cardAnimators[i].GetComponent<Image>();
@@ -43,11 +43,11 @@ public class CharacterSelectUI : MonoBehaviour
 
     private void RefreshLocks()
     {
-        for(int i = 0; i<characters.Length; i++)
+        for (int i = 0; i < characters.Length; i++)
         {
             bool unlocked = CharacterUnlocks.IsUnlocked(characters[i]);
             cardImages[i].color = unlocked ? cardBaseColors[i] : cardBaseColors[i] * lockedTint;
-            previewImages[i].color = unlocked ? previewBaseColors[i] : previewBaseColors[i] *lockedTint ;
+            previewImages[i].color = unlocked ? previewBaseColors[i] : previewBaseColors[i] * lockedTint;
         }
     }
 
@@ -59,6 +59,13 @@ public class CharacterSelectUI : MonoBehaviour
 
         if (unlocked) GameSession.selectedCharacter = c;
         playButton.interactable = unlocked;
+
+        // 잠긴 캐릭터일 때만 해금 버튼을 보여준다
+        unlockButton.SetActive(!unlocked);
+        if (!unlocked)
+        {
+            unlockButton.GetComponentInChildren<TextMeshProUGUI>().text = $"{c.UnlockCost}코인으로 해금";
+        }
 
         string stats = $"체력 {c.MaxHealth}              이동속도{c.MoveSpeed}               공격력 {c.BaseDamage}";
         if (unlocked)
