@@ -11697,6 +11697,15 @@ MonoBehaviour:
   continueButton: {fileID: 90500452}
   restartButton: {fileID: 1306054299}
   titleButton: {fileID: 2118092330}
+  controlsToHide:
+  - {fileID: 1201088236}
+  - {fileID: 1187733446}
+  - {fileID: 1114901312}
+  - {fileID: 1821577090}
+  - {fileID: 1832004736}
+  - {fileID: 260617480}
+  - {fileID: 60768214}
+  - {fileID: 759806547}
   fader: {fileID: 680502238}
 --- !u!4 &966676825
 Transform:

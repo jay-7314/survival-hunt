@@ -18,6 +18,7 @@ public class ClearUI : MonoBehaviour
     [SerializeField] private GameObject continueButton;
     [SerializeField] private GameObject restartButton;
     [SerializeField] private GameObject titleButton;
+    [SerializeField] private GameObject[] controlsToHide;
     [SerializeField] private Fader fader;
 
     private bool adReady;
@@ -32,6 +33,10 @@ public class ClearUI : MonoBehaviour
 
     public void Show(float elapsed)
     {
+        foreach(GameObject go in controlsToHide)
+        {
+            go.SetActive(false);
+        }
         SoundManager.Instance.Play(Sfx.Clear);
         timeText.text = FormatTime(elapsed);
 
