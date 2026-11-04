@@ -9,6 +9,7 @@ public class CharacterSelectUI : MonoBehaviour
     [SerializeField] private Animator[] cardAnimators;
     [SerializeField] private TextMeshProUGUI infoText;
     [SerializeField] private Button playButton;
+    [SerializeField] private Button dailyButton;
     [SerializeField] private GameObject unlockButton;
     [SerializeField] private Color lockedTint = new Color(0.45f, 0.45f, 0.45f, 1f);
 
@@ -59,6 +60,7 @@ public class CharacterSelectUI : MonoBehaviour
 
         if (unlocked) GameSession.selectedCharacter = c;
         playButton.interactable = unlocked;
+        if(dailyButton != null) dailyButton.interactable = unlocked;
 
         // 잠긴 캐릭터일 때만 해금 버튼을 보여준다
         unlockButton.SetActive(!unlocked);

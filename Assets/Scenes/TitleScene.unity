@@ -3542,6 +3542,7 @@ MonoBehaviour:
   - {fileID: 316375792}
   infoText: {fileID: 289160975}
   playButton: {fileID: 1795072979}
+  dailyButton: {fileID: 0}
   unlockButton: {fileID: 1582488936}
   lockedTint: {r: 0.45, g: 0.45, b: 0.45, a: 1}
 --- !u!1 &1332570870
@@ -6388,7 +6389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8108340186457141944, guid: 9c0d7ed8556d0ea479601e91f9ddf16e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

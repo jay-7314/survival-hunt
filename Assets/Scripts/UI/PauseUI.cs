@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseUI : MonoBehaviour
@@ -23,5 +24,19 @@ public class PauseUI : MonoBehaviour
         Time.timeScale = 1f;
         GameSession.ResetRun();
         SceneManager.LoadScene(1);
+    }
+
+    private void Update()
+    {
+        if(Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            if (pausePanel.activeSelf) Resume();
+            else Pause();
+        }
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if(pause) Pause();
     }
 }

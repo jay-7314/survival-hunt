@@ -63,7 +63,9 @@ public class MazeGenerator : MonoBehaviour
         Random.InitState(usedSeed);
         Debug.Log($"미로 시드{usedSeed}");
         Generate();
+#if UNITY_EDITOR
         PrintMaze();
+#endif
         DrawMaze();
         CreateArenaWaves();
         SetCameraBounds();

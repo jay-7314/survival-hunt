@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.Services.LevelPlay;
+using Unity.VisualScripting;
 
 public class ClearUI : MonoBehaviour
 {
@@ -65,12 +66,18 @@ public class ClearUI : MonoBehaviour
 
         startGameButton.SetActive(GameSession.isTutorial);
 
+        bool tutorial = GameSession.isTutorial;
+
         settleButton.SetActive(normal);
         continueButton.SetActive(normal);
-        restartButton.SetActive(!normal);
+        restartButton.SetActive(!normal && !tutorial);
         titleButton.SetActive(!normal);
-        rewardText.gameObject.SetActive(normal);
+        rewardText.gameObject.SetActive(normal || tutorial);
 
+        if (tutorial)
+        {
+            rewardText.text = "튜토리얼 완료!\n이제 진짜 사냥을 시작해 볼까요?";
+        }
         settled = false;
 
         if (normal)
