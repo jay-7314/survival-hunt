@@ -22,6 +22,7 @@ public class PlayerAttack : MonoBehaviour
     private float bonusAttackSpeed;
 
     public float CooldownRatio => Mathf.Clamp01(cooldownTimer / CurrentCooldown);
+    public float AttackSpeedRatio => (1f / CurrentCooldown) / (1f / attackCooldown);
 
     private void Awake()
     {
@@ -94,7 +95,7 @@ public class PlayerAttack : MonoBehaviour
         Projectile bullet = pool.Get();
         // 재사용된 총알은 이전 위치에 남아 있어서 위치를 다시 정해 준다
         bullet.transform.position = transform.position;
-        bullet.Launch(direction, baseDamage + bonusDamage, attackElement);
+        bullet.Launch(direction, baseDamage + bonusDamage, attackElement, targeting.CurrentRange, AttackSpeedRatio);
         SoundManager.Instance.Play(Sfx.Shoot);
         cooldownTimer = CurrentCooldown;
     }

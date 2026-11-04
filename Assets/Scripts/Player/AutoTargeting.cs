@@ -7,6 +7,7 @@ public class AutoTargeting : MonoBehaviour
     private float bonusRange;
 
     public Enemy Current { get; private set; }
+    public float CurrentRange => range + bonusRange;
 
     private void Update()
     {
@@ -20,7 +21,7 @@ public class AutoTargeting : MonoBehaviour
     private Enemy FindNearest()
     {
         Enemy nearest = null;
-        float currentRange = range + bonusRange;
+        float currentRange = CurrentRange;
         float bestSqr = currentRange * currentRange;
         Vector3 myPos = transform.position;
 

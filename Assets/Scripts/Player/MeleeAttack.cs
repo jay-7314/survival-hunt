@@ -16,6 +16,7 @@ public class MeleeAttack : MonoBehaviour
     [SerializeField] private LayerMask wallMask;
     [SerializeField] private PressButton swingButton;
     [SerializeField] private GameObject hitEffectPrefab;
+    [SerializeField] private float meleeDamageMultiplier = 0.75f;
 
     private float cooldownTimer;
     private InputAction meleeAction;
@@ -100,7 +101,7 @@ public class MeleeAttack : MonoBehaviour
             if(health == null) continue;
 
             float multiplier = ElementChart.GetMultiplier(playerAttack.CurrentElement, targets[i].Element);
-            int finalDamage = Mathf.Max(1, Mathf.RoundToInt(playerAttack.CurrentDamage * multiplier));
+            int finalDamage = Mathf.Max(1, Mathf.RoundToInt(playerAttack.CurrentDamage * multiplier * meleeDamageMultiplier));
             health.TakeDamage(finalDamage);
 
             if(hitEffectPrefab != null)
