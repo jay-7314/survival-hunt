@@ -13,6 +13,7 @@
 ## 플레이 영상
 
 ![Survival Hunt 플레이](docs/images/survival-hunt-demo-small.gif)
+유튜브에서 전체 영상을 보실수 있습니다. https://youtu.be/djVPuocOTgk
 
 ## 스크린샷
 
