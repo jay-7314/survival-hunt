@@ -8,21 +8,25 @@
 | 엔진 | Unity 6000.3.8f1 (2D URP, C#) |
 | 플랫폼 | Android (가로 화면) |
 | 개발 | 1인 개발: 기획, 프로그래밍, UI, 캐릭터 애니메이션, 스토어 출시 준비 |
-| 상태 | Google Play 내부 테스트 진행 중 (비공개 테스트 준비) |
+| 상태 | Google Play 비공개 테스트 진행 중 (출시 준비) |
+
+## 플레이 영상
+
+![Survival Hunt 플레이](docs/images/demo.gif)
 
 ## 스크린샷
 
-| 캐릭터 선택 | 전투 |
-|---|---|
-| <img src="docs/images/Character_Select.png" width="100%"> | <img src="docs/images/Play.png" width="100%"> |
+| 타이틀 | 캐릭터 선택 | 잠긴 캐릭터 |
+|:---:|:---:|:---:|
+| <img src="docs/images/title.png" width="300"> | <img src="docs/images/selectCharacter.png" width="300"> | <img src="docs/images/Unlock_selectCharacter.png" width="300"> |
 
-| 카드 선택 | 클리어 / 정산 |
-|---|---|
-| <img src="docs/images/card_select.png" width="100%"> | <img src="docs/images/Clear.png" width="100%"> |
+| 튜토리얼 | 능력 카드 선택 | 전투 |
+|:---:|:---:|:---:|
+| <img src="docs/images/Tutorial.png" width="300"> | <img src="docs/images/Pick_stat.png" width="300"> | <img src="docs/images/ground_battle.png" width="300"> |
 
-| 튜토리얼 |
-|---|
-| <img src="docs/images/Tutorial.png" width="50%"> |
+| 게임 오버 | 클리어 / 정산 |
+|:---:|:---:|
+| <img src="docs/images/GameOver.png" width="300"> | <img src="docs/images/Clear.png" width="300"> |
 
 ## 한눈에 보기
 
@@ -101,7 +105,7 @@ Assets/
 Packages/
 ProjectSettings/
 docs/
-  images/     README 스크린샷
+  images/     README 스크린샷과 플레이 GIF
 privacy.html  개인정보처리방침 (GitHub Pages)
 ```
 
