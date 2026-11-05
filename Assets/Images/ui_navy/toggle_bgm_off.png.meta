@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: dd8860396c031a64b855b8c123ce943a
+guid: 4ae44478262df114483923602b7d55e5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -909760729512810095
-    second: card_frame_earth_0
+      213: -7128465532869894529
+    second: toggle_bgm_off_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: card_frame_earth_0
+      name: toggle_bgm_off_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 40
+        width: 256
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 199e9c6cf61ef53f0800000000000000
-      internalID: -909760729512810095
+      spriteID: f7e9ca7bd5a921d90800000000000000
+      internalID: -7128465532869894529
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      card_frame_earth_0: -909760729512810095
+      toggle_bgm_off_0: -7128465532869894529
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

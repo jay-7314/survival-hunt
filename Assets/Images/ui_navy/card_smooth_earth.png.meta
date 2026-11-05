@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c6b66c5a3babacf46b06e3f21d8c36a5
+guid: 8ba5a0b9cc759a944860add20221b913
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5254421988223007721
-    second: card_frame_wind_0
+      213: 6006579598245064917
+    second: card_smooth_earth_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,23 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: card_frame_wind_0
+      name: card_smooth_earth_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 40
+        width: 256
+        height: 318
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 60, y: 60, z: 60, w: 60}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ebb80c85f47be840800000000000000
-      internalID: 5254421988223007721
+      spriteID: 5d071840258ab5350800000000000000
+      internalID: 6006579598245064917
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 06240a98079856c4bac52c10c6a0e33f
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      card_frame_wind_0: 5254421988223007721
+      card_smooth_earth_0: 6006579598245064917
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

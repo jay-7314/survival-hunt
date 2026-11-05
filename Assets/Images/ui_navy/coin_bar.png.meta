@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ce2c4cb3f22a7a645a3aa6a5f6f00a68
+guid: a42c70893de6bb848ac5c0b7dde20188
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1074798468259968541
-    second: card_frame_fire_0
+      213: 2908903028267788843
+    second: coin_bar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,23 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: card_frame_fire_0
+      name: coin_bar_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 40
+        width: 512
+        height: 126
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 70, y: 20, z: 70, w: 20}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d16f4c923837aee00800000000000000
-      internalID: 1074798468259968541
+      spriteID: b2aa5f564ef7e5820800000000000000
+      internalID: 2908903028267788843
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 16709dd3621026a4592d68d90908fb33
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      card_frame_fire_0: 1074798468259968541
+      coin_bar_0: 2908903028267788843
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

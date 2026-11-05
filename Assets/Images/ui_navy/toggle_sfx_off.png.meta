@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3533d915599513d4d8795eb361f12bfa
+guid: 6b55d7fb1529e8841ab21a1c0f6446fa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8139719423079072813
-    second: icon_coin_0
+      213: -4290428053529379206
+    second: toggle_sfx_off_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: icon_coin_0
+      name: toggle_sfx_off_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 256
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d24c9ff60b716f070800000000000000
-      internalID: 8139719423079072813
+      spriteID: a7eb20fba665574c0800000000000000
+      internalID: -4290428053529379206
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      icon_coin_0: 8139719423079072813
+      toggle_sfx_off_0: -4290428053529379206
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
