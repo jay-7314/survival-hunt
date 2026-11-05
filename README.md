@@ -12,7 +12,7 @@
 
 ## 플레이 영상
 
-![Survival Hunt 플레이](docs/images/demo.gif)
+![Survival Hunt 플레이](docs/images/survival-hunt-demo-small.gif)
 
 ## 스크린샷
 
