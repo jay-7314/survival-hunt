@@ -15,6 +15,11 @@ public class LevelUpListener : MonoBehaviour
     [SerializeField] private Health playerHealth;
     [SerializeField] private int skipHealAmount = 2;
 
+    [SerializeField] private Sprite fireCardSprite;
+    [SerializeField] private Sprite waterCardSprite;
+    [SerializeField] private Sprite earthCardSprite;
+    [SerializeField] private Sprite windCardSprite;
+
     private CardData pendingCard;
     private List<CardData> currentCards;
 
@@ -33,10 +38,13 @@ public class LevelUpListener : MonoBehaviour
         pendingCard = null;
         replacePrompt.SetActive(false);
         currentCards = cardPicker.PickRandom(3);
-        for(int i = 0; i< currentCards.Count && i< currentCards.Count; i++)        //글자칸이나 카드수보다 많이 접근해서 에러가 나지 않게 하기
+        for (int i = 0; i < currentCards.Count && i < currentCards.Count; i++)
         {
             cardTexts[i].text = $"{currentCards[i].CardName}\n{currentCards[i].Description}";
-            cardImages[i].color = ElementColors.Get(currentCards[i].CardElement);
+
+            Sprite s = CardSpriteOf(currentCards[i].CardElement);
+            if (s != null) cardImages[i].sprite = s;
+            cardImages[i].color = Color.white;
         }
         SoundManager.Instance.Play(Sfx.LevelUp);
         cardPanel.SetActive(true);
@@ -67,6 +75,17 @@ public class LevelUpListener : MonoBehaviour
         cardManager.Replace(slotIndex, pendingCard);
         pendingCard = null;
         CloseLevelUp();
+    }
+    private Sprite CardSpriteOf(Element e)
+    {
+        switch (e)
+        {
+            case Element.Fire: return fireCardSprite;
+            case Element.Water: return waterCardSprite;
+            case Element.Earth: return earthCardSprite;
+            case Element.Wind: return windCardSprite;
+            default: return null;
+        }
     }
 
     private void CloseLevelUp()

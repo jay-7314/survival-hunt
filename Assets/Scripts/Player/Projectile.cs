@@ -7,7 +7,12 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float lifeTime = 5f;        // 안전망: 사거리 검사가 놓쳐도 이 시간이 지나면 사라진다
     [SerializeField] private int damage = 1;
     [SerializeField] private GameObject hitEffectPrefab;
+    [SerializeField] private Sprite fireSprite;
+    [SerializeField] private Sprite waterSprite;
+    [SerializeField] private Sprite earthSprite;
+    [SerializeField] private Sprite windSprite;
 
+    private SpriteRenderer sr;
     private Element element;
     private ObjectPool<Projectile> pool;
     private Vector3 direction;
@@ -19,6 +24,7 @@ public class Projectile : MonoBehaviour
 
     public void SetPool(ObjectPool<Projectile> ownerPool)
     {
+        sr = GetComponent<SpriteRenderer>();
         pool = ownerPool;
     }
 
@@ -27,6 +33,10 @@ public class Projectile : MonoBehaviour
         direction = dir.normalized;
         damage = newDamage;
         element = newElement;
+        Sprite s = SpriteOf(newElement);
+        if (sr != null && s != null) sr.sprite = s;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
         maxRange = newRange;
         // 너무 빨라지면 벽을 뚫고 지나갈 수 있어서 2배까지만 허용한다
         currentSpeed = speed * Mathf.Min(speedRatio, 2f);
@@ -50,6 +60,18 @@ public class Projectile : MonoBehaviour
         if (timer >= lifeTime)
         {
             Despawn();
+        }
+    }
+
+    private Sprite SpriteOf(Element e)
+    {
+        switch (e)
+        {
+            case Element.Fire: return fireSprite;
+            case Element.Water: return waterSprite;
+            case Element.Earth: return earthSprite;
+            case Element.Wind: return windSprite;
+            default: return null;
         }
     }
 

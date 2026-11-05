@@ -17,8 +17,13 @@ public class KeyCounterUI : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        if (keyManager != null) Refresh(keyManager.Collected, keyManager.Total);
+    }
+
     private void Refresh(int collected, int total)
     {
-        text.text = $"열쇠{collected}/{total}";
+        text.text = $"{collected} / {total}";
     }
 }
