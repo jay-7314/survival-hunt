@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private Sprite earthSprite;
     [SerializeField] private Sprite windSprite;
 
+    private int wallMask;
     private SpriteRenderer sr;
     private Element element;
     private ObjectPool<Projectile> pool;
@@ -26,6 +27,7 @@ public class Projectile : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         pool = ownerPool;
+        wallMask = LayerMask.GetMask("Wall");
     }
 
     public void Launch(Vector3 dir, int newDamage, Element newElement, float newRange = 5f, float speedRatio = 1f)
@@ -47,10 +49,11 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
+        Vector3 previous = transform.position;
         transform.position += direction * currentSpeed * Time.deltaTime;
 
         // 날아간 거리가 사거리를 넘으면 반납한다
-        if ((transform.position - startPosition).sqrMagnitude >= maxRange * maxRange)
+        if(Physics2D.Linecast(previous, transform.position, wallMask))
         {
             Despawn();
             return;
@@ -85,11 +88,11 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
-        {
-            Despawn();
-            return;
-        }
+        //if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        //{
+        //    Despawn();
+        //    return;
+        //}
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy == null) return;
         Health health = other.GetComponent<Health>();

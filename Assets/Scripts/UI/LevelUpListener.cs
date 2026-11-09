@@ -53,7 +53,7 @@ public class LevelUpListener : MonoBehaviour
 
     public void SelectCard(int index)
     {
-        if (pendingCard != null) return;
+        //    if (pendingCard != null) return;
         if (currentCards == null || index >= currentCards.Count) return;
 
         CardData card = currentCards[index];
