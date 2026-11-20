@@ -36,6 +36,5 @@ public class TutorialEnemies : MonoBehaviour
             tries++;
             if(spawner.SpawnInArea(area)!= null) spawned++;
         }
-        Debug.Log($"튜토리얼 소환 :{spawned}/{count} 마리 (시도{tries}번), 범위 {area}");
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class CardManager : MonoBehaviour
@@ -29,7 +28,6 @@ public class CardManager : MonoBehaviour
             int e = (int)slots[i].card.CardElement;
             elementCounts[e] += 1;
         }
-        Debug.Log($"불 : {elementCounts[1]}, 물 : {elementCounts[2]}, 땅 :{elementCounts[3]}, 바람 : {elementCounts[4]}");
     }
 
     public CardSlot getSlot(int index)
@@ -74,21 +72,6 @@ public class CardManager : MonoBehaviour
         slots[0].level = 1;
     }
 
-    [ContextMenu("Print Slots")]
-    private void PrintSlots()
-    {
-        for (int i = 0; i < slots.Length; i++)
-        {
-            if (slots[i].IsEmpty)
-            {
-                Debug.Log($"슬롯 {i} : 비어있음");
-            }
-            else
-            {
-                Debug.Log($"슬롯  {i} : {slots[i].card.CardName} Lv {slots[i].level}");
-            }
-        }
-    }
 
     public SelectResult TrySelect(CardData card)
     {
@@ -97,7 +80,6 @@ public class CardManager : MonoBehaviour
             if (slots[i].card == card)      //이 부분이 먼저 들어가야함.
             {
                 if (slots[i].level < MaxLevel) slots[i].level++;
-                Debug.Log($"{card.CardName} 합치기 Lv {slots[i].level}");
                 Recalculate();
                 return SelectResult.Merged;
             }
@@ -109,7 +91,6 @@ public class CardManager : MonoBehaviour
             {
                 slots[i].card = card;
                 slots[i].level = 1;
-                Debug.Log($"{card.CardName} 장착 : 슬롯 {i}");
                 Recalculate();
                 return SelectResult.Equipped;
             }
@@ -150,7 +131,6 @@ public class CardManager : MonoBehaviour
         MaxHealthBonus += GetSynergyTier(Element.Earth) * 3;
         AttackSpeedBonus += GetSynergyTier(Element.Wind) * 0.5f;
 
-        Debug.Log($"보너스 합계 : 공격력 {DamageBonus}, 이동속도 {MoveSpeedBonus}, 최대체력 {MaxHealthBonus}, 사거리 : {RangeBonus}, 공격속도 :{AttackSpeedBonus}");
         playerMove.SetMoveSpeedBonus(MoveSpeedBonus);
         playerAttack.SetDamageBonus(Mathf.RoundToInt(DamageBonus));
         autoTargeting.SetRangeBonus(RangeBonus);
@@ -196,7 +176,6 @@ public class CardManager : MonoBehaviour
     {
         slots[slotIndex].card = card;
         slots[slotIndex].level = 1;
-        Debug.Log($"{card.CardName} 교체 : 슬롯 : {slotIndex}");
         Recalculate();
     }
 
@@ -217,7 +196,6 @@ public class CardManager : MonoBehaviour
             slots[i].level = GameSession.carryLevels[i];
         }
         Recalculate();
-        Debug.Log("이어받기 : 카드 복원");
     }
 
     private Element GetDominantElement()

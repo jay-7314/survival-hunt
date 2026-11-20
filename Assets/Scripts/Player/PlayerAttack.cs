@@ -73,14 +73,12 @@ public class PlayerAttack : MonoBehaviour
     public void SetAttackElement(Element element)
     {
         attackElement = element;
-        Debug.Log($"속성 공격 : {attackElement}");
     }
 
     public void ApplyCharacter(CharacterData data)
     {
         baseDamage = data.BaseDamage;
         attackCooldown = data.AttackCooldown;
-        Debug.Log($"케릭터 적용 : 공격력 {baseDamage}, 쿨타임 :{attackCooldown}");
     }
 
     // 나중에 화면의 공격 버튼(UI)도 이 함수를 부르게 할 것이라 public으로 분리
@@ -103,13 +101,11 @@ public class PlayerAttack : MonoBehaviour
     public void SetDamageBonus(int bonus)
     {
         bonusDamage = bonus;
-        Debug.Log($"공격력 :{baseDamage+bonusDamage}");
     }
 
     public void SetAttackSpeedBonus(float bonus)
     {
         bonusAttackSpeed = bonus;
-        Debug.Log($"공격 쿨타임 : {CurrentCooldown}");
     }
 
     private float CurrentCooldown

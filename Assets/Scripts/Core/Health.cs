@@ -36,7 +36,6 @@ public class Health : MonoBehaviour
 
         lastHitTime = Time.time;
         currentHealth -= amount;
-        Debug.Log($"{name} 체력 {currentHealth}");
         NotifyChanged();
         Damaged?.Invoke();
         if(currentHealth <= 0)
@@ -57,7 +56,6 @@ public class Health : MonoBehaviour
     {
         maxHealth += amount;
         currentHealth += amount;
-        Debug.Log($"최대체력 : {maxHealth}");
         NotifyChanged();
     }
 
@@ -69,7 +67,6 @@ public class Health : MonoBehaviour
         if (diff > 0) currentHealth += diff;
         else currentHealth = Mathf.Min(currentHealth, maxHealth + bonusMaxHealth);
 
-        Debug.Log($"최대체력: {maxHealth+ bonusMaxHealth} /현재체력 {currentHealth}");
         NotifyChanged();
     }
 
@@ -77,7 +74,6 @@ public class Health : MonoBehaviour
     {
         maxHealth = data.MaxHealth;
         currentHealth = maxHealth + bonusMaxHealth;
-        Debug.Log($"케릭터 적용 : 최대체력 {maxHealth + bonusMaxHealth}");
         NotifyChanged();
     }
 
@@ -86,7 +82,6 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0) return;
 
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth + bonusMaxHealth);
-        Debug.Log($"체력 회복 : {currentHealth} / {maxHealth + bonusMaxHealth}");
         NotifyChanged();
     }
 

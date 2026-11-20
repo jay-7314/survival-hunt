@@ -32,7 +32,6 @@ extern void CardManager_get_AttackSpeedBonus_m3073653F8D57AC26AC9DC69F295B27A751
 extern void CardManager_set_AttackSpeedBonus_mA40C13C93967E994F3E8BE0930B654C5260B15C4 (void);
 extern void CardManager_Awake_m43F9F25286E41DB135D62C4F530FA8BD1911D91D (void);
 extern void CardManager_FillTestSlot_mDAF88DB5DD93462FC5D07BD4D21E6CF981EED6FD (void);
-extern void CardManager_PrintSlots_m6BC980B6063EC376A735EB7E07C53031BBEEB965 (void);
 extern void CardManager_TrySelect_mAC350A140E3EAEB96D1070EA81A83DFCBAC7D3CD (void);
 extern void CardManager_Recalculate_m91A64FA6AB5BFDAD1CBC8F996294ACFADCBD3E2C (void);
 extern void CardManager_AddEffect_m789743ADEA521BF4DA781BE636B26B17B1D1729D (void);
@@ -529,7 +528,7 @@ extern void VirtualJoyStick_ResetStick_m3B82BFB1E899625E70F860ABBD373D7F0F8D684B
 extern void VirtualJoyStick__ctor_mAC7FAAD8760FD1F48BCB9162FF4FBD5BAE78518F (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (void);
-static Il2CppMethodPointer s_methodPointers[522] = 
+static Il2CppMethodPointer s_methodPointers[521] = 
 {
 	CardEffectEntry__ctor_m2D6D0A67B1E30A3DB4E61429C26773305EAB80D0,
 	CardData_get_CardName_mD9A36D4EA1B61A70B3F1F5DE12575AD8B5D3FFD4,
@@ -556,7 +555,6 @@ static Il2CppMethodPointer s_methodPointers[522] =
 	CardManager_set_AttackSpeedBonus_mA40C13C93967E994F3E8BE0930B654C5260B15C4,
 	CardManager_Awake_m43F9F25286E41DB135D62C4F530FA8BD1911D91D,
 	CardManager_FillTestSlot_mDAF88DB5DD93462FC5D07BD4D21E6CF981EED6FD,
-	CardManager_PrintSlots_m6BC980B6063EC376A735EB7E07C53031BBEEB965,
 	CardManager_TrySelect_mAC350A140E3EAEB96D1070EA81A83DFCBAC7D3CD,
 	CardManager_Recalculate_m91A64FA6AB5BFDAD1CBC8F996294ACFADCBD3E2C,
 	CardManager_AddEffect_m789743ADEA521BF4DA781BE636B26B17B1D1729D,
@@ -1054,7 +1052,7 @@ static Il2CppMethodPointer s_methodPointers[522] =
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1,
 };
-static const int32_t s_InvokerIndices[522] = 
+static const int32_t s_InvokerIndices[521] = 
 {
 	15351,
 	15116,
@@ -1079,7 +1077,6 @@ static const int32_t s_InvokerIndices[522] =
 	11654,
 	15228,
 	11654,
-	15351,
 	15351,
 	15351,
 	9317,
@@ -1583,7 +1580,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	522,
+	521,
 	s_methodPointers,
 	0,
 	NULL,
