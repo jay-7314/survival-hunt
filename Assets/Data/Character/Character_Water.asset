@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: "\uC544\uB9AC"
   description: "\uBB3C\uC758 \uC6D0\uC18C\uB97C \uAC16\uACE0 \uC2DC\uC791\uD569\uB2C8\uB2E4.\n\uADE0\uD615\uC7A1\uD78C
-    \uCF00\uB9AD\uD130\uB85C \uAC8C\uC784\uC744 \uC2DC\uC791\uD569\uB2C8\uB2E4."
+    \uCE90\uB9AD\uD130\uB85C \uAC8C\uC784\uC744 \uC2DC\uC791\uD569\uB2C8\uB2E4."
   moveSpeed: 5
   baseDamage: 2
   maxHealth: 10

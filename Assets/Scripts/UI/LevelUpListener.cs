@@ -14,6 +14,7 @@ public class LevelUpListener : MonoBehaviour
     [SerializeField] private GameObject replacePrompt;
     [SerializeField] private Health playerHealth;
     [SerializeField] private int skipHealAmount = 2;
+    [SerializeField, Range(0f, 1f)] private float levelUpHealRatio = 0.25f;
 
     [SerializeField] private Sprite fireCardSprite;
     [SerializeField] private Sprite waterCardSprite;
@@ -35,6 +36,10 @@ public class LevelUpListener : MonoBehaviour
 
     private void HandleLeveledUp(int newLevel)
     {
+        // 레벨업하면 최대 체력의 일부를 회복한다.
+        int healAmount = Mathf.CeilToInt(playerHealth.Max * levelUpHealRatio);
+        playerHealth.Heal(healAmount);
+
         pendingCard = null;
         replacePrompt.SetActive(false);
         currentCards = cardPicker.PickRandom(3);
@@ -59,7 +64,7 @@ public class LevelUpListener : MonoBehaviour
         CardData card = currentCards[index];
         CardManager.SelectResult result = cardManager.TrySelect(card);
 
-        if(result == CardManager.SelectResult.NeedReplace)
+        if (result == CardManager.SelectResult.NeedReplace)
         {
             pendingCard = card;
             replacePrompt.SetActive(true);
@@ -105,6 +110,6 @@ public class LevelUpListener : MonoBehaviour
     {
         playerHealth.Heal(skipHealAmount);
         Debug.Log("카드 건너뛰기");
-         CloseLevelUp() ;
+        CloseLevelUp();
     }
 }

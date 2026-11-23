@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TitleMenu : MonoBehaviour
 {
@@ -13,21 +14,37 @@ public class TitleMenu : MonoBehaviour
     [SerializeField] private CharacterData[] dailyCharacters;
     [SerializeField] private TextMeshProUGUI dailyBestText;
     [SerializeField] private GameObject quitButton;
+    [SerializeField] private Image tutorialIcon;
+    [SerializeField] private Sprite tutorialOnSprite;
+    [SerializeField] private Sprite tutorialOffSprite;
 
     public void OnStartClicked()
     {
         GameSession.isDaily = false;
-        GameSession.isTutorial = true;
+        GameSession.isTutorial = GameSession.TutorialOn;
         StartCoroutine(ShowPanel(selectPanel));
         GameSession.ResetRun();
+    }
+
+    public void OnTutorialToggleClicked()
+    {
+        GameSession.TutorialOn = !GameSession.TutorialOn;
+        RefreshTutorialIcon();
+    }
+
+    private void RefreshTutorialIcon()
+    {
+        if (tutorialIcon == null) return;
+        tutorialIcon.sprite = GameSession.TutorialOn ? tutorialOnSprite : tutorialOffSprite;
     }
 
     private void Start()
     {
         if (Application.isMobilePlatform)
         {
-            quitButton.SetActive(false);        
+            quitButton.SetActive(false);
         }
+        RefreshTutorialIcon();
     }
 
     public void OnDailyClicked()
